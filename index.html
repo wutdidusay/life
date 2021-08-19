@@ -82,6 +82,7 @@
             for(i=0; i<menu.length; i++){
               if( val == menu[i] ){
                   alert('같은 메뉴자나 바보야') 
+                  $('input').val('');
                   return true
               }
             }
@@ -100,6 +101,11 @@
         var ranNumb = Math.floor(Math.random() * menu.length)
             console.log(ranNumb)
         var eatThis = []
+        var elTop = $('.menu ul li').eq(ranNumb).offset().top
+
+        $('html, body').animate({
+          scrollTop: elTop - 50
+        }, 700)
 
         eatThis.push(menu[ranNumb])
         // menu.splice(ranNumb, 1) 당첨된 메뉴 제거
