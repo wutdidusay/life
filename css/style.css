@@ -1,9 +1,6 @@
-h1,h2 {
-    padding: 20px;
-}
-input{
-    line-height: 40px;
-    font-size: 20px;
+html,body{
+    height: 100%;
+    background: #4dabf7;
 }
 nav{
     position: fixed;
@@ -16,6 +13,9 @@ nav{
     background: #fff;
     padding: 7px 10px;
     transition: all 0.2s;
+}
+nav li:not(:last-child){
+    padding-bottom: 10px;
 }
 nav li.active:before{
     content: '*';
@@ -34,6 +34,7 @@ nav .mark{
     border: 1px solid #000;
     border-left: none;
     background: #fff;
+    text-align: center;
 }
 nav .mark:before{
     content: '}';
@@ -59,39 +60,110 @@ nav.active .mark:before{
     opacity: 1;
     visibility: visible;
 }
-.add-menu{
-    line-height: 40px;
-    padding: 0 20px;
-    font-size: 20px;
-    border-radius: none;
-}
-.result{
-    display: inline-block;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    border: #ccc;
+
+/* title section */
+h1 {
+    font-size: 25px;
+    text-align: center;
+    padding: 20px;
     color: #fff;
-    background: #000;
-    transition: all 0.3s;
 }
-.result:active{
-    transform: scale(0.9);
+h1 i{
+    color: #fff;
+    transition: all 0.5s;
 }
+h1 i:active{
+    transform: rotate(360deg);
+}
+
+/* input section */
+.input-wrap{
+    margin: 0 15px;
+    border: 2px solid;
+    overflow: hidden;
+    border-radius: 5px;
+}
+.input-wrap input{
+    float: left;
+    width: calc(100% - 50px);
+    font-size: 20px;
+    line-height: 50px;
+    padding: 0 15px;
+    border: none;
+    background: #fff;
+}
+.add-menu{
+    float: left;
+    width: 50px;
+    font-size: 20px;
+    border: none;
+    border-left: 2px solid;
+}
+.add-menu i{
+    font-size: 30px;
+    line-height: 50px;
+    color: #fff;
+    transition: all 0.1s;
+}
+.add-menu i:active{
+    font-size: 25px;
+}
+
+/* list section */
 .menu{
-    padding: 20px 0;
+    padding: 20px 15px;
 }
 .menu li{
-    padding-bottom: 10px;
+    position: relative;
+    min-height: 50px;
+    font-size: 20px;
+    line-height: 1.2;
+    padding: 12px 45px 12px 15px;
+    background: #fff;
+    border: 2px solid;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    transition: all 0.2s;
+    opacity: 1;
+}
+.menu li.remove{
+    opacity: 0;
+    transform: translateX(-100%);
+}
+.menu li.active{
+    background: #e2e3e5;
+    transform: scale(1.05);
 }
 .del {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 20px;
     text-decoration: none;
     font-style: normal;
     cursor: pointer;
-    margin-left: 20px;
-    border: 1px solid;
+    color: #dc3545;
+}
+
+/* submit button */
+.result-wrap{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 20px;
+}
+.result-wrap .result{
+    display: inline-block;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
+    color: #000;
+    background: #fff;
+    transition: all 0.3s;
+}
+.result-wrap .result:active{
+    transform: rotate(180deg);
 }

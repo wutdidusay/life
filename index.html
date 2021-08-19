@@ -12,6 +12,7 @@
   <link rel="apple-touch-icon" href="img/apple-icon.png">
   <link rel="apple-touch-icon-precomposed" href="img/apple-icon.png" />
   <link rel="icon" href="img/favicon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/style.css">
   <title>지우</title>
@@ -27,14 +28,18 @@
     </ul>
   </nav>
 
-    <h1>랜덤메뉴 <button type="button" class="clear">리셋</button></h1>
-    <input type="text" placeholder="메뉴를 적으셈" class="input">
-    <button type="button" class="add-menu">추가</button>
+    <h1>랜덤메뉴 <button type="button" class="clear"><i class="fas fa-sync-alt"></i></button></h1>
+    <div class="input-wrap">
+      <input type="text" placeholder="메뉴를 적으셈" class="input">
+      <button type="button" class="add-menu"><i class="fas fa-plus"></i></button>
+    </div>
     <div class="menu">
         <ul>
         </ul>
     </div>
-    <button type="button" class="result">돌려돌려<br/>메뉴판</button>
+    <div class="result-wrap">
+      <button type="button" class="result">돌려돌려<br/>메뉴판</button>
+    </div>
     
   <script>
     $(function () {
@@ -78,7 +83,7 @@
   
             if( overlap !== true ){
                 menu.push(val);
-                $('.menu ul').append('<li>' + val + '<i class="del">x</i>' + '</li>');
+                $('.menu ul').append('<li>' + val + '<i class="del fas fa-minus-circle"></i>' + '</li>');
             }
           }
           console.log(overlap)
@@ -92,7 +97,9 @@
 
         eatThis.push(menu[ranNumb])
         // menu.splice(ranNumb, 1) 당첨된 메뉴 제거
-        alert(eatThis)
+        $('.menu ul li').removeClass('active')
+        $('.menu ul li').eq(ranNumb).addClass('active')
+        // alert(eatThis)
       }
 
       function del(){
@@ -109,7 +116,10 @@
       $('.menu ul').on('click', '.del', function(){
         var idx = $(this).parent().index()
         menu.splice(idx, 1);
-        $(this).parent().remove();
+        $(this).parent().addClass('remove')
+        setTimeout(() => {
+          $(this).parent().remove()
+          }, 200);
         console.log(menu)
       })
       $('input').keydown(function (key) {
