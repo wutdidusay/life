@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="HandheldFriendly" content="true">
+  <link rel="apple-touch-icon" href="img/apple-icon.png">
+  <link rel="apple-touch-icon-precomposed" href="img/apple-icon.png" />
+  <link rel="icon" href="img/favicon.ico">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <title>지우</title>
+  <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+</head>
+
+<body>
+  <div class="dim"></div>
+  <nav>
+    <span class="mark"></span>
+    <ul>
+      <li><a href="index.html">랜덤메뉴</a></li>
+    </ul>
+  </nav>
+
+    <h1>랜덤메뉴 <button type="button" class="clear">리셋</button></h1>
+    <input type="text" placeholder="메뉴를 적으셈" class="input">
+    <button type="button" class="add-menu">추가</button>
+    <div class="menu">
+        <ul>
+        </ul>
+    </div>
+    <button type="button" class="result">돌려돌려<br/>메뉴판</button>
+    
+  <script>
+    $(function () {
+      var menu = []
+      var overlap = false;
+
+      $('.mark, .dim').click(function(){
+        if($('nav').is('.active')){
+          $('nav, .dim').removeClass('active');
+        } else {
+          $('nav, .dim').addClass('active');
+        }
+      });
+      
+      function pathMenu(){
+        var windowPath = window.location.pathname.split("/").pop()
+        var pathMenu = []
+        $('nav li').removeClass()
+
+        for(i=0; i<$('nav li').length; i++){
+          var pathHref = $('nav li').eq(i).find('a').attr('href')
+          if(windowPath == pathHref){
+            $('nav li').eq(i).addClass('active')
+          }
+        }
+      } pathMenu()
+
+      function addMenu(){
+          var val = $('input').val();
+          var overlap = false;
+
+          if(val == ''){
+            overflap = true;
+          } else {
+            for(i=0; i<menu.length; i++){
+              if( val == menu[i] ){
+                  alert('같은 메뉴자나 바보야') 
+                  return true
+              }
+            }
+  
+            if( overlap !== true ){
+                menu.push(val);
+                $('.menu ul').append('<li>' + val + '<i class="del">x</i>' + '</li>');
+            }
+          }
+          console.log(overlap)
+          console.log(menu)
+      }
+
+      function result(){
+        var ranNumb = Math.floor(Math.random() * menu.length)
+            console.log(ranNumb)
+        var eatThis = []
+
+        eatThis.push(menu[ranNumb])
+        // menu.splice(ranNumb, 1) 당첨된 메뉴 제거
+        alert(eatThis)
+      }
+
+      function del(){
+        console.log('check')
+      }
+
+      $('.add-menu').click(function(){
+          addMenu()
+      })
+      $('.clear').click(function(){
+          menu = []
+          $('.menu ul li').remove()
+      })
+      $('.menu ul').on('click', '.del', function(){
+        var idx = $(this).parent().index()
+        menu.splice(idx, 1);
+        $(this).parent().remove();
+        console.log(menu)
+      })
+      $('input').keydown(function (key) {
+          if (key.keyCode == 13) {
+              addMenu()
+          }
+      })
+      $('.result').click(function(){
+          result()
+      })
+    })
+  </script>
+</body>
+
+</html>

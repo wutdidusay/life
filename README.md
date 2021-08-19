@@ -1,2 +1,1 @@
-# life
-literally 'coding for in real life'
+# LITERALLY 생활용 코딩
