@@ -73,6 +73,7 @@ h1 i{
     transition: all 0.5s;
 }
 h1 i:active{
+    -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
 }
 
@@ -166,5 +167,6 @@ h1 i:active{
     transition: all 0.3s;
 }
 .result-wrap .result:active{
+    -webkit-transform: rotate(180deg);
     transform: rotate(180deg);
 }
