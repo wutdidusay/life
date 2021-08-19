@@ -103,6 +103,7 @@ button {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* HTML5 display-role reset for older browsers */
