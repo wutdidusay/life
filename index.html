@@ -39,6 +39,7 @@
     </div>
     <div class="result-wrap">
       <button type="button" class="result">돌려돌려<br/>메뉴판</button>
+      <button type="button" class="to-top"><i class="fas fa-arrow-alt-circle-up"></i></button>
     </div>
     
   <script>
@@ -105,7 +106,7 @@
 
         $('html, body').animate({
           scrollTop: elTop - 50
-        }, 700)
+        }, 500)
 
         eatThis.push(menu[ranNumb])
         // menu.splice(ranNumb, 1) 당첨된 메뉴 제거
@@ -141,6 +142,22 @@
       })
       $('.result').click(function(){
           result()
+      })
+      $(window).scroll(function(){
+        var sct = $(this).scrollTop();
+        var scb = sct + $(this).height();
+        var scw = $(document).height();
+
+        if(scb >= scw){
+          $('.to-top').addClass('active');
+        }else{
+          $('.to-top').removeClass('active');
+        }
+      })
+      $('.to-top').click(function(){
+        $('html, body').animate({
+          scrollTop: 0
+        }, 500)
       })
     })
   </script>

@@ -68,10 +68,11 @@ h1 {
     text-align: center;
     padding: 20px;
     color: #fff;
+    text-shadow: 2px 2px 0px #000;
 }
 h1 i{
     color: #fff;
-    transition: all 0.5s;
+    transition: all 0.2s;
 }
 h1 i:active{
     -webkit-transform: rotate(360deg);
@@ -168,9 +169,24 @@ h1 i:active{
     border: 2px solid;
     color: #000;
     background: #fff;
-    transition: all 0.3s;
+    transition: all 0.2s;
 }
 .result-wrap .result:active{
     -webkit-transform: rotate(180deg);
     transform: rotate(180deg);
+}
+.result-wrap .to-top{
+    position: absolute;
+    top: 50%;
+    right: -70px;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    transition: all 0.2s;
+}
+.result-wrap .to-top i{
+    font-size: 35px;
+    color: #fff;
+}
+.result-wrap .to-top.active{
+    right: 15px;
 }
