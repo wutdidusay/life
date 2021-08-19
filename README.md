@@ -1,1 +1,1 @@
-# LITERALLY 생활용 코딩
+# literally 'coding for in real life'
