@@ -160,6 +160,7 @@ h1 i:active{
     width: 70px;
     height: 70px;
     border-radius: 50%;
+    border: 2px solid;
     color: #000;
     background: #fff;
     transition: all 0.3s;
