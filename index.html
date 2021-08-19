@@ -84,6 +84,7 @@
             if( overlap !== true ){
                 menu.push(val);
                 $('.menu ul').append('<li>' + val + '<i class="del fas fa-minus-circle"></i>' + '</li>');
+                $('input').val('');
             }
           }
           console.log(overlap)
