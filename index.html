@@ -132,14 +132,10 @@
         // alert(eatThis)
       }
 
-      function del(){
-        console.log('check')
-      }
-
       $('.add-menu').click(function(){
           addMenu()
       })
-      $('.clear').click(function(){
+      $('h1').click(function(){
           menu = []
           $('.menu ul li').remove()
       })
@@ -160,6 +156,11 @@
       $('.result').click(function(){
           result()
       })
+      $('.to-top').click(function(){
+        $('html, body').animate({
+          scrollTop: 0
+        }, 500)
+      })
       $(window).scroll(function(){
         var sct = $(this).scrollTop();
         var scb = sct + $(this).height();
@@ -170,11 +171,6 @@
         }else{
           $('.to-top').removeClass('active');
         }
-      })
-      $('.to-top').click(function(){
-        $('html, body').animate({
-          scrollTop: 0
-        }, 500)
       })
     })
   </script>

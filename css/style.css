@@ -72,9 +72,9 @@ h1 {
 }
 h1 i{
     color: #fff;
-    transition: all 0.2s;
+    transition: all 0.5s;
 }
-h1 i:active{
+h1:active i{
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
 }
