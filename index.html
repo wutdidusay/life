@@ -26,6 +26,7 @@
   <link rel="stylesheet" href="css/style.css">
   <title>점심메뉴 고르기</title>
   <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+  <script src="common.js"></script>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JX9E6TSS0S"></script>
   <script>
@@ -36,12 +37,13 @@
   </script>
 </head>
 
-<body ontouchstart="">
+<body class="chooseMenu" ontouchstart="">
   <div class="dim"></div>
   <nav>
     <span class="mark"></span>
     <ul>
       <li><a href="index.html">랜덤메뉴</a></li>
+      <li><a href="map-api.html">업데이트 예정</a></li>
     </ul>
   </nav>
 
@@ -60,35 +62,9 @@
     </div>
     
   <script>
-    document.documentElement.addEventListener('touchstart', function (event) {
-      if (event.touches.length > 1) {
-        event.preventDefault();
-      }
-    }, false);
     $(function () {
       var menu = []
       var overlap = false;
-
-      $('.mark, .dim').click(function(){
-        if($('nav').is('.active')){
-          $('nav, .dim').removeClass('active');
-        } else {
-          $('nav, .dim').addClass('active');
-        }
-      });
-      
-      function pathMenu(){
-        var windowPath = window.location.pathname.split("/").pop()
-        var pathMenu = []
-        $('nav li').removeClass()
-
-        for(i=0; i<$('nav li').length; i++){
-          var pathHref = $('nav li').eq(i).find('a').attr('href')
-          if(windowPath == pathHref){
-            $('nav li').eq(i).addClass('active')
-          }
-        }
-      } pathMenu()
 
       function addMenu(){
           var val = $('input').val();
@@ -120,9 +96,10 @@
             console.log(ranNumb)
         var eatThis = []
         var elTop = $('.menu ul li').eq(ranNumb).offset().top
+        var halfPos = $(window).height() / 2 - 45
 
         $('html, body').animate({
-          scrollTop: elTop - 50
+          scrollTop: elTop - halfPos
         }, 500)
 
         eatThis.push(menu[ranNumb])
