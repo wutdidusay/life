@@ -56,32 +56,30 @@
         <button type="button" class="to-top"><i class="fas fa-arrow-alt-circle-up"></i></button>
     </div>
     <script>
-        if (!navigator.geolocation) alert("어디 계신지 모르게써요")
-
-        var latitude = '';
-        var longitude = '';
-        navigator.geolocation.getCurrentPosition(function(pos) {
-            // 위도
-            var latitude = pos.coords.latitude;
-            // 경도
-            var longitude = pos.coords.longitude;
-        });
-
-
         var map = new naver.maps.Map('map', {
-            center: new naver.maps.LatLng(latitude, longitude),
-            zoom: 8,
-            logoControl: false
-        });
-        var marker = new naver.maps.Marker({
-            position: new naver.maps.LatLng(latitude, longitude),
-            map: map,
-            logoControl: false
+            center: new naver.maps.LatLng(37.3595704, 127.105399),
+            logoControl: false,
+            scaleControl: false,
+            mapDataControl: false,
+            zoom: 17
         });
 
-        document.cookie = "safeCookie1=foo; SamSite=Lax";
-        document.cookie = "safeCookie2=foo;";
-        document.cookie = "crossCookie=bar; SamSite=None; Secure";
+        var curLocation = '';
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(pos) {
+                curLocation = new naver.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+                map.setCenter(curLocation)
+                var marker = new naver.maps.Marker({
+                    map: map,
+                    position: curLocation,
+                    // icon: { url: 'img/here.png'}
+                });
+            });
+        } else alert("어디 계신지 모르게써요")
+
+        $('.result').click(function(){
+        });
     </script>
 </body>
 
