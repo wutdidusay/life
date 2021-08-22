@@ -27,6 +27,7 @@
   <title>점심메뉴 고르기</title>
   <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
   <script src="common.js"></script>
+  <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=64xneazn5f"></script>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JX9E6TSS0S"></script>
   <script>
@@ -43,16 +44,45 @@
         <span class="mark"></span>
         <ul>
             <li><a href="index.html">랜덤메뉴</a></li>
-            <li><a href="map-api.html">업데이트 예정</a></li>
+            <li><a href="map-api.html">내 주변 음식점</a></li>
         </ul>
     </nav>
 
     <h1>내 주변 음식점 <button type="button" class="clear"><i class="fas fa-sync-alt"></i></button></h1>
     <p class="notice-text">지도 api 기반 점심메뉴 고르기 업데이트 예정</p>
+    <div id="map" style="height:calc(100% - 120px);"></div>
     <div class="result-wrap">
         <button type="button" class="result">돌려돌려<br/>메뉴판</button>
         <button type="button" class="to-top"><i class="fas fa-arrow-alt-circle-up"></i></button>
-    </div> 
+    </div>
+    <script>
+        if (!navigator.geolocation) alert("어디 계신지 모르게써요")
+
+        var latitude = '';
+        var longitude = '';
+        navigator.geolocation.getCurrentPosition(function(pos) {
+            // 위도
+            var latitude = pos.coords.latitude;
+            // 경도
+            var longitude = pos.coords.longitude;
+        });
+
+
+        var map = new naver.maps.Map('map', {
+            center: new naver.maps.LatLng(latitude, longitude),
+            zoom: 8,
+            logoControl: false
+        });
+        var marker = new naver.maps.Marker({
+            position: new naver.maps.LatLng(latitude, longitude),
+            map: map,
+            logoControl: false
+        });
+
+        document.cookie = "safeCookie1=foo; SamSite=Lax";
+        document.cookie = "safeCookie2=foo;";
+        document.cookie = "crossCookie=bar; SamSite=None; Secure";
+    </script>
 </body>
 
 </html>

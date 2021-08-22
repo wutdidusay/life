@@ -6,7 +6,6 @@ body.chooseMenu{
 }
 body.map-api{
     background: #ffb0de;
-    /* background: #ec95ec; */
 }
 .notice-text{
     text-align: center;
@@ -198,4 +197,11 @@ h1:active i{
 }
 .result-wrap .to-top.active{
     right: 15px;
+}
+
+#map {
+    margin: 0 15px;
+    border: 2px solid;
+    overflow: hidden;
+    border-radius: 5px;
 }
