@@ -27,7 +27,6 @@
   <title>점심메뉴 고르기</title>
   <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
   <script src="common.js"></script>
-  <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=64xneazn5f"></script>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JX9E6TSS0S"></script>
   <script>
@@ -38,52 +37,55 @@
   </script>
 </head>
 
-<body class="map-api" ontouchstart="">
+<body class="lotto" ontouchstart="">
     <div class="dim"></div>
     <nav>
         <span class="mark"></span>
         <ul>
-            <li><a href="index.html">랜덤메뉴</a></li>
-            <li class="active"><a href="map-api.html">내 주변 음식점</a></li>
+            <li class="active"><a href="index.html">랜덤메뉴</a></li>
+            <li><a href="map-api.html">내 주변 음식점</a></li>
             <li><a href="eat-this.html">이거 먹어</a></li>
             <li><a href="lotto.html"><i class="fas fa-exclamation-triangle"></i>어른의 맛</a></li>
         </ul>
     </nav>
-
-    <h1>내 주변 음식점 <button type="button" class="clear"><i class="fas fa-sync-alt"></i></button></h1>
-    <p class="notice-text">지도 api 기반 점심메뉴 고르기 업데이트 예정</p>
-    <div id="map" style="height:calc(100% - 120px);"></div>
+    <h1>어른의 맛</h1>
+    <div class="menu">
+        <ul>
+        </ul>
+    </div>
     <div class="result-wrap">
-        <button type="button" class="result">돌려돌려<br/>메뉴판</button>
-        <button type="button" class="to-top"><i class="fas fa-arrow-alt-circle-up"></i></button>
+        <button type="button" class="lottoResult">돌려돌려<br/>내 인생</button>
     </div>
     <script>
-        var map = new naver.maps.Map('map', {
-            center: new naver.maps.LatLng(37.3595704, 127.105399),
-            logoControl: false,
-            scaleControl: false,
-            mapDataControl: false,
-            zoom: 17
-        });
+        $(function () {
+            var lottoNumb = []
+            function selectNumb() {
+                var numbList = []
+                for (i = 1; i < 46; i++) {
+                    numbList.push(i)
+                }
+                for (j = 1; j < 8; j++) {
+                    var ranNumb = Math.floor(Math.random() * numbList.length)
+                    lottoNumb.push(numbList[ranNumb])
+                    numbList.splice(ranNumb, 1)
+                }
+            }
 
-        var curLocation = '';
+            function sortNumb(a, b) {
+                return a - b
+            }
 
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(pos) {
-                curLocation = new naver.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
-                map.setCenter(curLocation)
-                var marker = new naver.maps.Marker({
-                    map: map,
-                    position: curLocation,
-                    icon: {
-                        url: 'https://wutdidusay.github.io/life/img/here.png'
-                    }
-                });
-            });
-        } else alert("어디 계신지 모르게써요")
-
-        $('.result').click(function(){
-        });
+            $('.lottoResult').click(function(){
+                lottoNumb = []
+                $('.menu ul li').remove()
+                
+                selectNumb()
+                lottoNumb.sort(sortNumb)
+                for (i = 0; i < 7; i++) {
+                    $('.menu ul').append('<li>' + lottoNumb[i] + '</li>');
+                }
+            })
+        })
     </script>
 </body>
 
