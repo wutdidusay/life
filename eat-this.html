@@ -72,29 +72,6 @@
     
   <script>
     $(function () {
-        var eatThis = $.getJSON("./menuList.json", function (data) {
-                return data
-            });
-        var menu = [];
-
-        $('.input-wrap li').click(function(){
-            $('.input-wrap li').removeClass('active');
-            $(this).addClass('active');
-
-
-            for (i=0; i<eatThis.responseJSON.length; i++) {
-                if( this.id == eatThis.responseJSON[i].food ) {
-                    pick = i;
-                    console.log(i)
-                    return true;
-                } console.log(pick)
-            }
-            var val = eatThis.responseJSON[pick].list
-            menu.push(val);
-            $('.menu ul').append('<li>' + val + '<i class="del fas fa-minus-circle"></i>' + '</li>');
-
-            console.log(menu)
-        });
     })
   </script>
 </body>

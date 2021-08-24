@@ -150,6 +150,10 @@ h1:active i{
     text-align: center;
     transition: all 0.2s;
 }
+.input-wrap li:active{
+    font-size: 18px;
+    transition: all 0.1s;
+}
 .input-wrap li.active{
     background: #0f5132;
     color: #fff;

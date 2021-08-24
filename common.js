@@ -26,9 +26,6 @@ $(function(){
     }
   } pathMenu()
 
-  var menu = []
-  var overlap = false;
-
   function addMenu(){
     var val = $('input').val();
     var overlap = false;
@@ -71,6 +68,41 @@ $(function(){
     $('.menu ul li').eq(ranNumb).addClass('active')
     // alert(eatThis)
   }
+
+  var menu = []
+  var eatThis = $.getJSON("./menuList.json", function (data) {
+      return data
+    });
+
+  $('.input-wrap li').on('click',function(){
+      $('.input-wrap li').removeClass('active');
+      $(this).addClass('active');
+      menu = []
+      $('.menu ul li').remove()
+
+      if(this.id == 'All'){
+          for (i=0; i<eatThis.responseJSON.length; i++){
+              for (j=0; j<eatThis.responseJSON[i].list.length; j++){
+                  var val = eatThis.responseJSON[i].list[j]
+                  menu.push(val)
+                  $('.menu ul').append('<li>' + val + '<i class="del fas fa-minus-circle"></i>' + '</li>');
+              }
+          }
+      }
+
+      for (i=0; i<eatThis.responseJSON.length; i++){
+          if( this.id == eatThis.responseJSON[i].food ) {
+              pick = i;
+              for (j=0; j<eatThis.responseJSON[pick].list.length; j++){
+                var val = eatThis.responseJSON[pick].list[j]
+                menu.push(val)
+                $('.menu ul').append('<li>' + val + '<i class="del fas fa-minus-circle"></i>' + '</li>');
+              }
+          }
+      }
+      console.log(menu)
+  });
+
   // add menu
   $('.add-menu').click(function(){
     addMenu()
@@ -99,7 +131,8 @@ $(function(){
   })
     
   // show result
-  $('.result').click(function(){
+  $('.result').on('click',function(){
+    console.log(menu)
     result()
   })
 
