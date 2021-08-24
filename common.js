@@ -71,11 +71,14 @@ $(function(){
 
   var menu = []
   var eatThis = $.getJSON("./menuList.json", function (data) {
-    for (i=0; i<eatThis.responseJSON.length; i++){
-      for (j=0; j<eatThis.responseJSON[i].list.length; j++){
-          var val = eatThis.responseJSON[i].list[j]
-          menu.push(val)
-          $('.eat-this-wrap ul').append('<li>' + val + '<i class="del fas fa-minus-circle"></i>' + '</li>');
+    var winPath = window.location.pathname.split("/").pop().split('.').shift()
+    if(winPath == 'eat-this'){
+      for (i=0; i<eatThis.responseJSON.length; i++){
+        for (j=0; j<eatThis.responseJSON[i].list.length; j++){
+            var val = eatThis.responseJSON[i].list[j]
+            menu.push(val)
+            $('.eat-this-wrap ul').append('<li>' + val + '<i class="del fas fa-minus-circle"></i>' + '</li>');
+        }
       }
     }
     return data
