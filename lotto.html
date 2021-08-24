@@ -43,13 +43,13 @@
         <span class="mark"></span>
         <ul>
             <li class="active"><a href="index.html">랜덤메뉴</a></li>
-            <li><a href="map-api.html">내 주변 음식점</a></li>
-            <li><a href="eat-this.html">이거 먹어</a></li>
-            <li><a href="lotto.html"><i class="fas fa-exclamation-triangle"></i>어른의 맛</a></li>
+            <li><a href="map-api.html">공사중</a></li>
+            <li><a href="eat-this.html">공사중</a></li>
+            <li><a href="lotto.html"></i>어른의 맛</a></li>
         </ul>
     </nav>
-    <h1>어른의 맛</h1>
-    <div class="menu">
+    <h1><i class="fas fa-exclamation-triangle"></i>어른의 맛</h1>
+    <div class="lotto-wrap">
         <ul>
         </ul>
     </div>
@@ -77,12 +77,12 @@
 
             $('.lottoResult').click(function(){
                 lottoNumb = []
-                $('.menu ul li').remove()
+                $('.lotto-wrap li').remove()
                 
                 selectNumb()
                 lottoNumb.sort(sortNumb)
                 for (i = 0; i < 7; i++) {
-                    $('.menu ul').append('<li>' + lottoNumb[i] + '</li>');
+                    $('.lotto-wrap ul').append('<li>' + lottoNumb[i] + '</li>').fadeIn();
                 }
             })
         })
