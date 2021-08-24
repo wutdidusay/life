@@ -48,19 +48,28 @@
             <li><a href="lotto.html"></i>어른의 맛</a></li>
         </ul>
     </nav>
-    <h1><i class="fas fa-exclamation-triangle"></i>어른의 맛</h1>
+    <h1>어른의 맛</h1>
+    <p class="notice-text">굳이 말 안해도 알죠?</p>
     <div class="lotto-wrap">
         <ul>
         </ul>
     </div>
+    <p class="lotto-numb"></p>
     <div class="result-wrap">
         <button type="button" class="lottoResult">돌려돌려<br/>내 인생</button>
     </div>
     <script>
         $(function () {
             var lottoNumb = []
+            var numbList = []
+
+            for (i = 1; i < 46; i++) {
+                $('.lotto-wrap ul').append('<li>' + i + '</li>');
+            }
+
             function selectNumb() {
-                var numbList = []
+                numbList = []
+                lottoNumb = []
                 for (i = 1; i < 46; i++) {
                     numbList.push(i)
                 }
@@ -75,15 +84,15 @@
                 return a - b
             }
 
-            $('.lottoResult').click(function(){
-                lottoNumb = []
-                $('.lotto-wrap li').remove()
-                
+            $('.lottoResult').on('click',function(){
+                $('.lotto-wrap ul li').removeClass('active')
                 selectNumb()
                 lottoNumb.sort(sortNumb)
-                for (i = 0; i < 7; i++) {
-                    $('.lotto-wrap ul').append('<li>' + lottoNumb[i] + '</li>').fadeIn();
+
+                for( i=0; i<lottoNumb.length; i++){
+                    $('.lotto-wrap ul li').eq(lottoNumb[i]-1).addClass('active')
                 }
+                $('.lotto-numb').text(lottoNumb)
             })
         })
     </script>

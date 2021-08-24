@@ -15,14 +15,26 @@ body.lotto{
 }
 .notice-text{
     text-align: center;
+    background: #ffc107;
+    border: 2px solid #000;
+    border-width: 2px 0;
+    padding: 5px 0;
     margin-bottom: 10px;
+}
+.notice-text:before{
+    content: '\f071';
+    display: inline-block;
+    font-family: "Font Awesome 5 Free";
+    color: #fff;
+    vertical-align: middle;
+    margin-right: 5px;
 }
 nav{
     position: fixed;
     width: auto;
     top: 10px;
     left: 0;
-    z-index: 2;
+    z-index: 3;
     border: 2px solid #000;
     border-left: none;
     background: #fff;
@@ -84,7 +96,7 @@ nav.active .mark:before{
     bottom: 0;
     transition: all 0.2s;
     background: rgba(0,0,0,0.6);
-    z-index: 1;
+    z-index: 2;
     opacity: 0;
     visibility: hidden;
 }
@@ -219,23 +231,26 @@ h1:active i{
     border: 2px solid #000;
     border-radius: 50%;
     margin-bottom: 10px;
-    transition: all 1s;
+    transition: all 0.2s;
 }
 .lotto-wrap li:not(:first-child) {
     margin-left: 5px;
 }
-.lotto-wrap li:last-child {
-    position: relative;
-    margin-left: 40px;
+.lotto-wrap li.active {
+    background: #ffeeba;
+    transform: scale(1.05);
 }
-.lotto-wrap li:last-child:after {
-    content: '\f067';
-    font-family: "Font Awesome 5 Free";
-    color: #fff;
-    position: absolute;
-    top: 50%;
-    left: -30px;
-    transform: translateY(-50%);
+.lotto-numb {
+    overflow: hidden;
+    border-radius: 5px;
+    font-size: 20px;
+    min-height: 54px;
+    line-height: 50px;
+    padding: 0 15px;
+    margin: 0 15px;
+    border: 2px solid #000;
+    background: #fff;
+    text-align: center;
 }
 
 /* submit button */
