@@ -17,12 +17,11 @@ $(function(){
     
   function pathMenu(){
     var windowPath = window.location.pathname.split("/").pop()
-    var pathMenu = []
-    $('nav li').removeClass()
     for(i=0; i<$('nav li').length; i++){
         var pathHref = $('nav li').eq(i).find('a').attr('href')
         if(windowPath == pathHref){
-        $('nav li').eq(i).addClass('active')
+          $('nav li').removeClass()
+          $('nav li').eq(i).addClass('active')
         }
     }
   } pathMenu()
