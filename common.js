@@ -75,7 +75,7 @@ $(function(){
       for (j=0; j<eatThis.responseJSON[i].list.length; j++){
           var val = eatThis.responseJSON[i].list[j]
           menu.push(val)
-          $('.menu ul').append('<li>' + val + '<i class="del fas fa-minus-circle"></i>' + '</li>');
+          $('.eat-this-wrap ul').append('<li>' + val + '<i class="del fas fa-minus-circle"></i>' + '</li>');
       }
     }
     return data
