@@ -71,8 +71,15 @@ $(function(){
 
   var menu = []
   var eatThis = $.getJSON("./menuList.json", function (data) {
-      return data
-    });
+    for (i=0; i<eatThis.responseJSON.length; i++){
+      for (j=0; j<eatThis.responseJSON[i].list.length; j++){
+          var val = eatThis.responseJSON[i].list[j]
+          menu.push(val)
+          $('.menu ul').append('<li>' + val + '<i class="del fas fa-minus-circle"></i>' + '</li>');
+      }
+    }
+    return data
+  });
 
   $('.input-wrap li').on('click',function(){
       $('.input-wrap li').removeClass('active');

@@ -125,7 +125,7 @@ h1:active i{
 /* input section */
 .input-wrap{
     margin: 0 15px;
-    border: 2px solid;
+    border: 2px solid #000;
     overflow: hidden;
     border-radius: 5px;
 }
@@ -159,7 +159,7 @@ h1:active i{
     color: #fff;
     text-shadow: 2px 2px 0px #000;
 }
-.input-wrap li:not(:nth-child(1),:nth-child(4)){
+.input-wrap li:not(:nth-child(1)):not(:nth-child(4)){
     border-left: 2px solid #000;
 }
 .input-wrap li:nth-child(n+4){
@@ -193,7 +193,7 @@ h1:active i{
     line-height: 1.2;
     padding: 12px 45px 12px 15px;
     background: #fff;
-    border: 2px solid;
+    border: 2px solid #000;
     border-radius: 5px;
     margin-bottom: 10px;
     transition: all 0.2s;
@@ -276,7 +276,7 @@ h1:active i{
     width: 70px;
     height: 70px;
     border-radius: 50%;
-    border: 2px solid;
+    border: 2px solid #000;
     color: #000;
     background: #fff;
     transition: all 0.2s;
@@ -304,7 +304,7 @@ h1:active i{
 
 #map {
     margin: 0 15px;
-    border: 2px solid;
+    border: 2px solid #000;
     overflow: hidden;
     border-radius: 5px;
 }
