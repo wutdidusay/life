@@ -27,7 +27,6 @@
   <title>점심메뉴 고르기</title>
   <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
   <script src="common.js"></script>
-  <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=64xneazn5f"></script>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-JX9E6TSS0S"></script>
   <script>
@@ -38,52 +37,65 @@
   </script>
 </head>
 
-<body class="map-api" ontouchstart="">
-    <div class="dim"></div>
-    <nav>
-        <span class="mark"></span>
-        <ul>
-            <li><a href="index.html">랜덤메뉴</a></li>
-            <li><a href="map-api.html">내 주변 음식점</a></li>
-            <li><a href="eat-this.html">이거 먹어</a></li>
-        </ul>
-    </nav>
+<body class="eat-this" ontouchstart="">
+  <div class="dim"></div>
+  <nav>
+    <span class="mark"></span>
+    <ul>
+      <li><a href="index.html">랜덤메뉴</a></li>
+      <li><a href="map-api.html">내 주변 음식점</a></li>
+      <li><a href="eat-this.html">이거 먹어</a></li>
+    </ul>
+  </nav>
 
-    <h1>내 주변 음식점 <button type="button" class="clear"><i class="fas fa-sync-alt"></i></button></h1>
-    <p class="notice-text">지도 api 기반 점심메뉴 고르기 업데이트 예정</p>
-    <div id="map" style="height:calc(100% - 120px);"></div>
-    <div class="result-wrap">
-        <button type="button" class="result">돌려돌려<br/>메뉴판</button>
-        <button type="button" class="to-top"><i class="fas fa-arrow-alt-circle-up"></i></button>
+    <h1>이거 먹어 <button type="button" class="clear"><i class="fas fa-sync-alt"></i></button></h1>
+    <p class="notice-text">답정너 메뉴 고르기 업데이트 중</p>
+    <div class="input-wrap">
+      <ul class="tab">
+          <li id="All" class="active">아몰랑</li>
+          <li id="KR">한식</li>
+          <li id="CN">중식</li>
+          <li id="US">양식</li>
+          <li id="JP">일식</li>
+          <li id="ETC">기타</li>
+      </ul>
     </div>
-    <script>
-        var map = new naver.maps.Map('map', {
-            center: new naver.maps.LatLng(37.3595704, 127.105399),
-            logoControl: false,
-            scaleControl: false,
-            mapDataControl: false,
-            zoom: 17
-        });
-
-        var curLocation = '';
-
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(pos) {
-                curLocation = new naver.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
-                map.setCenter(curLocation)
-                var marker = new naver.maps.Marker({
-                    map: map,
-                    position: curLocation,
-                    icon: {
-                        url: 'https://wutdidusay.github.io/life/img/here.png'
-                    }
-                });
+    <div class="menu">
+        <ul>
+        </ul>
+    </div>
+    <div class="result-wrap">
+      <button type="button" class="result">돌려돌려<br/>메뉴판</button>
+      <button type="button" class="to-top"><i class="fas fa-arrow-alt-circle-up"></i></button>
+    </div>
+    
+  <script>
+    $(function () {
+        var eatThis = $.getJSON("./menuList.json", function (data) {
+                return data
             });
-        } else alert("어디 계신지 모르게써요")
+        var menu = [];
 
-        $('.result').click(function(){
+        $('.input-wrap li').click(function(){
+            $('.input-wrap li').removeClass('active');
+            $(this).addClass('active');
+
+
+            for (i=0; i<eatThis.responseJSON.length; i++) {
+                if( this.id == eatThis.responseJSON[i].food ) {
+                    pick = i;
+                    console.log(i)
+                    return true;
+                } console.log(pick)
+            }
+            var val = eatThis.responseJSON[pick].list
+            menu.push(val);
+            $('.menu ul').append('<li>' + val + '<i class="del fas fa-minus-circle"></i>' + '</li>');
+
+            console.log(menu)
         });
-    </script>
+    })
+  </script>
 </body>
 
 </html>
