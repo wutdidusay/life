@@ -48,8 +48,7 @@ nav li:not(:last-child){
 nav li a{
     position: relative;
 }
-nav li:nth-child(2) a:before,
-nav li:nth-child(3) a:before{
+nav li:nth-child(2) a:before{
     content: '';
     position: absolute;
     top: 40%;
