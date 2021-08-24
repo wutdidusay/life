@@ -35,26 +35,27 @@ body.lotto {
     vertical-align: middle;
     margin-right: 5px;
 }
-nav{
+nav {
     position: fixed;
     width: auto;
     top: 10px;
     left: 0;
     z-index: 3;
     border: 2px solid #000;
+    border-radius: 0 5px 5px 0;
     border-left: none;
     background: #fff;
     padding: 7px 10px;
     transition: all 0.2s;
     transform: translateX(-100%);
 }
-nav li:not(:last-child){
+nav li:not(:last-child) {
     padding-bottom: 10px;
 }
-nav li a{
+nav li a {
     position: relative;
 }
-nav li:nth-child(2) a:before{
+nav li:nth-child(2) a:before {
     content: '';
     position: absolute;
     top: 40%;
@@ -64,14 +65,14 @@ nav li:nth-child(2) a:before{
     height: 2px;
     background: #dc3545;
 }
-nav li.active:after{
+nav li.active:after {
     content: '\f058';
     display: inline-block;
     font-family: "Font Awesome 5 Free";
     vertical-align: middle;
     margin-left: 5px;
 }
-nav .mark{
+nav .mark {
     position: absolute;
     top: 0;
     right: -30px;
@@ -84,16 +85,16 @@ nav .mark{
     background: #fff;
     text-align: center;
 }
-nav .mark:before{
+nav .mark:before {
     content: '}';
 }
-nav.active{
+nav.active {
     transform: translateX(0);
 }
-nav.active .mark:before{
+nav.active .mark:before {
     content: '{';
 }
-.dim{
+.dim {
     position: fixed;
     top: 0;
     left: 0;
@@ -106,7 +107,7 @@ nav.active .mark:before{
     visibility: hidden;
 }
 .modal.active,
-.dim.active{
+.dim.active {
     opacity: 1;
     visibility: visible;
 }
@@ -159,24 +160,24 @@ h1 {
     color: #fff;
     text-shadow: 2px 2px 0px #000;
 }
-h1 i{
+h1 i {
     color: #fff;
     transition: all 0.5s;
     text-shadow: none;
 }
-h1:active i{
+h1:active i {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
 }
 
 /* input section */
-.input-wrap{
+.input-wrap {
     margin: 0 15px;
     border: 2px solid #000;
     overflow: hidden;
     border-radius: 5px;
 }
-.input-wrap input{
+.input-wrap input {
     float: left;
     width: calc(100% - 50px);
     font-size: 20px;
@@ -185,11 +186,11 @@ h1:active i{
     border: none;
     background: #fff;
 }
-.input-wrap ul{
+.input-wrap ul {
     overflow: hidden;
     background: #fff;
 }
-.input-wrap li{
+.input-wrap li {
     float: left;
     width: 33.33%;
     font-size: 20px;
@@ -197,43 +198,43 @@ h1:active i{
     text-align: center;
     transition: all 0.2s;
 }
-.input-wrap li:active{
+.input-wrap li:active {
     font-size: 18px;
     transition: all 0.1s;
 }
-.input-wrap li.active{
+.input-wrap li.active {
     background: #0f5132;
     color: #fff;
     text-shadow: 2px 2px 0px #000;
 }
-.input-wrap li:not(:nth-child(1)):not(:nth-child(4)){
+.input-wrap li:not(:nth-child(1)):not(:nth-child(4)) {
     border-left: 2px solid #000;
 }
-.input-wrap li:nth-child(n+4){
+.input-wrap li:nth-child(n+4) {
     border-top: 2px solid #000;
 }
-.add-menu{
+.add-menu {
     float: left;
     width: 50px;
     font-size: 20px;
     border: none;
     border-left: 2px solid;
 }
-.add-menu i{
+.add-menu i {
     font-size: 30px;
     line-height: 50px;
     color: #fff;
     transition: all 0.1s;
 }
-.add-menu i:active{
+.add-menu i:active {
     font-size: 25px;
 }
 
 /* list section */
-.menu{
+.menu {
     padding: 20px 15px;
 }
-.menu li{
+.menu li {
     position: relative;
     min-height: 50px;
     font-size: 20px;
@@ -246,14 +247,14 @@ h1:active i{
     transition: all 0.2s;
     opacity: 1;
 }
-.menu li:last-child{
+.menu li:last-child {
     margin-bottom: 100px;
 }
-.menu li.remove{
+.menu li.remove {
     opacity: 0;
     transform: translateX(-100%);
 }
-.menu li.active{
+.menu li.active {
     background: #ffeeba;
     transform: scale(1.05);
 }
@@ -291,7 +292,7 @@ h1:active i{
     background: #ffeeba;
     transform: scale(1.05);
 }
-.lotto-numb-wrap{
+.lotto-numb-wrap {
     padding-bottom: 100px;
 }
 .lotto-numb {
@@ -308,7 +309,7 @@ h1:active i{
 }
 
 /* submit button */
-.result-wrap{
+.result-wrap {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -318,7 +319,7 @@ h1:active i{
     z-index: 1;
 }
 .result-wrap .lottoResult,
-.result-wrap .result{
+.result-wrap .result {
     display: inline-block;
     width: 70px;
     height: 70px;
@@ -329,11 +330,11 @@ h1:active i{
     transition: all 0.2s;
 }
 .result-wrap .lottoResult:active,
-.result-wrap .result:active{
+.result-wrap .result:active {
     -webkit-transform: rotate(180deg);
     transform: rotate(180deg);
 }
-.result-wrap .to-top{
+.result-wrap .to-top {
     position: absolute;
     top: 50%;
     right: -70px;
@@ -341,11 +342,11 @@ h1:active i{
     border-radius: 50%;
     transition: all 0.2s;
 }
-.result-wrap .to-top i{
+.result-wrap .to-top i {
     font-size: 35px;
     color: #fff;
 }
-.result-wrap .to-top.active{
+.result-wrap .to-top.active {
     right: 15px;
 }
 
