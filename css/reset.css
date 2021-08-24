@@ -152,10 +152,10 @@ button:focus{
   outline:none;
 }
 input {
-  -moz-user-select: auto;
-  -webkit-user-select: auto;
-  -ms-user-select: auto;
-  user-select: auto;
+  -webkit-user-select: auto!important;
+  -moz-user-select: auto!important;
+  -ms-user-select: auto!important;
+  user-select: auto!important;
 }
 html{
   -webkit-text-size-adjust: none;
