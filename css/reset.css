@@ -151,6 +151,12 @@ input:focus,
 button:focus{
   outline:none;
 }
+input {
+  -moz-user-select: auto;
+  -webkit-user-select: auto;
+  -ms-user-select: auto;
+  user-select: auto;
+}
 html{
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
