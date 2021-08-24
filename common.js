@@ -6,15 +6,7 @@ document.documentElement.addEventListener('touchstart', function (event) {
 }, false);
 
 $(function(){
-  // aside navigation menu
-  $('.mark, .dim').click(function(){
-      if($('nav').is('.active')){
-        $('nav, .dim').removeClass('active');
-      } else {
-        $('nav, .dim').addClass('active');
-      }
-  });
-    
+
   function pathMenu(){
     var windowPath = window.location.pathname.split("/").pop()
     for(i=0; i<$('nav li').length; i++){
@@ -69,6 +61,7 @@ $(function(){
     // alert(eatThis)
   }
 
+  // eat this page menu load
   var menu = []
   var eatThis = $.getJSON("./menuList.json", function (data) {
     var winPath = window.location.pathname.split("/").pop().split('.').shift()
@@ -78,6 +71,7 @@ $(function(){
             var val = eatThis.responseJSON[i].list[j]
             menu.push(val)
             $('.eat-this-wrap ul').append('<li>' + val + '<i class="del fas fa-minus-circle"></i>' + '</li>');
+            $('.update-wrap ul').append('<li>' + val + '</li>');
         }
       }
     }
@@ -123,8 +117,34 @@ $(function(){
     }
   })
 
+  // aside navigation menu
+  $('.mark').click(function(){
+    if($('nav').is('.active')){
+      $('nav, .dim').removeClass('active');
+    } else {
+      $('nav, .dim').addClass('active');
+      $('html, body').addClass('noscroll')
+    }
+  });
+
+  // menu list modal
+  $('.update-modal').click(function(){
+    if($('.modal').is('.active')){
+      $('.modal, .dim').removeClass('active');
+    } else {
+      $('.modal, .dim').addClass('active');
+      $('html, body').addClass('noscroll')
+    }
+  });
+
+  // click dim close all
+  $('.dim').click(function(){
+    $('nav, .modal, .dim').removeClass('active');
+    $('html, body').removeClass('noscroll')
+  });
+
   // all clear
-  $('h1').click(function(){
+  $('.clear').click(function(){
     menu = []
     $('.menu ul li').remove()
   })
