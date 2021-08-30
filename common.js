@@ -176,11 +176,11 @@ $(function(){
   // top button show
   $(window).scroll(function(){
     var sct = $(this).scrollTop();
-    var scb = sct + $(this).height();
+    // var scb = sct + $(this).height();
     // var scw = $(document).height();
 
     // if(scb >= scw){
-    if(sct >= scb ){
+    if(sct >= 100 ){
       $('.to-top').addClass('active');
     }else{
       $('.to-top').removeClass('active');

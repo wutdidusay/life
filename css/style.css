@@ -343,8 +343,16 @@ h1:active i {
     transition: all 0.2s;
 }
 .result-wrap .to-top i {
+    display: block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
     font-size: 35px;
     color: #fff;
+    background: #000;
+    border-radius: 50%;
+    box-sizing: border-box;
 }
 .result-wrap .to-top.active {
     right: 15px;
