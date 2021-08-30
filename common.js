@@ -177,9 +177,10 @@ $(function(){
   $(window).scroll(function(){
     var sct = $(this).scrollTop();
     var scb = sct + $(this).height();
-    var scw = $(document).height();
+    // var scw = $(document).height();
 
-    if(scb >= scw){
+    // if(scb >= scw){
+    if(sct >= scb ){
       $('.to-top').addClass('active');
     }else{
       $('.to-top').removeClass('active');
