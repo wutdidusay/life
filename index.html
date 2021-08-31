@@ -2,71 +2,71 @@
 <html lang="ko">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta http-equiv="Content-Script-Type" content="text/javascript" />
-  <meta http-equiv="Content-Style-Type" content="text/css" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <meta name="HandheldFriendly" content="true">
-  <meta name="Author" content="wutdidusay" />
-  <meta name="Keywords" content="오점뭐, 오늘 점심 뭐 먹지, 점심메뉴 고르기, 점심메뉴 추천, 메뉴추천" />
-  <meta name="Description" content="점심 메뉴는 왜 이렇게 고르기 어려운것인가" />
-  <meta name="robots" content="ALL" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="오늘 점심 뭐 먹지" />
-  <meta property="og:site_name" content="오늘 점심 뭐 먹지"> 
-  <meta property="og:description" content="점심 메뉴는 왜 이렇게 고르기 어려운것인가" />
-  <meta property="og:url" content="https://wutdidusay.github.io/life" />
-  <meta property="og:image" content="img/meta-img.png" />
-  <meta property=”twitter:card” content="summary"/>
-  <meta property=”twitter:title” content="오늘 점심 뭐 먹지"/>
-  <meta property=”twitter:description” content="점심 메뉴는 왜 이렇게 고르기 어려운것인가"/>
-  <meta name="twitter:url" content="https://wutdidusay.github.io/life">
-  <meta property=”twitter:image” content="img/meta-img.png">
-  <link rel="apple-touch-icon" href="img/apple-icon.png">
-  <link rel="apple-touch-icon-precomposed" href="img/apple-icon.png" />
-  <link rel="icon" href="img/favicon.ico">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/style.css">
-  <title>오늘 점심 뭐 먹지</title>
-  <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
-  <script src="common.js"></script>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JX9E6TSS0S"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-JX9E6TSS0S');
-  </script>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="HandheldFriendly" content="true">
+    <meta name="Author" content="wutdidusay" />
+    <meta name="Keywords" content="오점뭐, 오늘 점심 뭐 먹지, 점심메뉴 고르기, 점심메뉴 추천, 메뉴추천" />
+    <meta name="Description" content="점심 메뉴는 왜 이렇게 고르기 어려운것인가" />
+    <meta name="robots" content="ALL" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="오늘 점심 뭐 먹지" />
+    <meta property="og:site_name" content="오늘 점심 뭐 먹지"> 
+    <meta property="og:description" content="점심 메뉴는 왜 이렇게 고르기 어려운것인가" />
+    <meta property="og:url" content="https://wutdidusay.github.io/life" />
+    <meta property="og:image" content="img/meta-img.png" />
+    <meta property=”twitter:card” content="summary"/>
+    <meta property=”twitter:title” content="오늘 점심 뭐 먹지"/>
+    <meta property=”twitter:description” content="점심 메뉴는 왜 이렇게 고르기 어려운것인가"/>
+    <meta name="twitter:url" content="https://wutdidusay.github.io/life">
+    <meta property=”twitter:image” content="img/meta-img.png">
+    <link rel="apple-touch-icon" href="img/apple-icon.png">
+    <link rel="apple-touch-icon-precomposed" href="img/apple-icon.png" />
+    <link rel="icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>오늘 점심 뭐 먹지</title>
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+    <script src="common.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JX9E6TSS0S"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-JX9E6TSS0S');
+    </script>
 </head>
 
 <body class="chooseMenu" ontouchstart="">
-  <div class="dim"></div>
-  <nav>
-    <span class="mark"></span>
-    <ul>
-      <li class="active"><a href="index.html">랜덤메뉴</a></li>
-      <li><a href="map-api.html">공사중</a></li>
-      <li><a href="eat-this.html">이거 먹어</a></li>
-      <li><a href="lotto.html">어른의 맛</a></li>
-    </ul>
-  </nav>
+    <div class="dim"></div>
+    <nav>
+        <span class="mark"></span>
+        <ul>
+            <li class="active"><a href="index.html">랜덤메뉴</a></li>
+            <li><a href="map-api.html">공사중</a></li>
+            <li><a href="eat-this.html">이거 먹어</a></li>
+            <li><a href="lotto.html">어른의 맛</a></li>
+        </ul>
+    </nav>
 
     <h1 class="clear">랜덤메뉴 <i class="fas fa-sync-alt"></i></h1>
     <div class="input-wrap">
-      <input type="text" placeholder="메뉴를 적으셈" class="input">
-      <button type="button" class="add-menu"><i class="fas fa-plus"></i></button>
+        <input type="text" placeholder="메뉴를 적으셈" class="input">
+        <button type="button" class="add-menu"><i class="fas fa-plus"></i></button>
     </div>
     <div class="menu">
         <ul>
         </ul>
     </div>
     <div class="result-wrap">
-      <button type="button" class="result">돌려돌려<br/>메뉴판</button>
-      <button type="button" class="to-top"><i class="fas fa-arrow-alt-circle-up"></i></button>
+        <button type="button" class="result">돌려돌려<br/>메뉴판</button>
+        <button type="button" class="to-top"><i class="fas fa-arrow-alt-circle-up"></i></button>
     </div>
 </body>
 
