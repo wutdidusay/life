@@ -74,6 +74,7 @@
         });
 
         var curLocation = '';
+        var storeList = [];
 
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function(pos) {
@@ -90,6 +91,65 @@
             });
         } else alert("어디 계신지 모르게써요")
 
+        const SearchFacility = (e)=>{
+
+        const {kakao}= window;
+        var infowindow = new kakao.maps.InfoWindow({zIndex:1});
+        var ps = new kakao.maps.services.Places();  // 키워드로 검색 인스턴스 생성
+
+        const where = e.target.value;
+
+        const current = new kakao.maps.LatLng(location.x, location.y);
+            ps.keywordSearch(where, (data, status, pagination)=>{  // 키워드로 검색한다. 
+                if (status === kakao.maps.services.Status.OK) {
+                    storeList.setLocationArr(data);  // 스토어에 좌표값들을 저장한다. 
+                    if(markerArr.length !==0){
+                    deleteMarker();
+                    }
+                    const tmpArr = [];
+                    for (var i=0; i<data.length; i++) {
+                        displayMarker(map,infowindow ,data[i], tmpArr, where);    
+                    }
+                    setMarkerArr(tmpArr);       
+                }
+            },{location : current});  // 현재 위치를 기반으로 키워드 검색
+        }
+
+        const createMarker = useCallback(()=>{
+        
+        const {naver} = window;
+            for (var i=0; i<arr.length; i++) {
+                console.log(nMap, arr[i].x, arr[i].y);
+                let cur = new naver.maps.LatLng(arr[i].y, arr[i].x);
+                let marker = new naver.maps.Marker({
+                    map: nMap,
+                    position: cur,
+                    
+                });
+            
+            }
+        },[arr, nMap]);
+
+        const NaverMap = observer(() =>{
+        const curPos = curLocation.getXY;  // 현재 위치를 스토어에서 가져온다.
+        const arr = storeList.locationArr;  // 카카오 api 에서 얻은 키워드에 해당되는 좌표값
+        const [markArr, setMarkArr] = useState([]);
+        const [nMap, setNmap] = useState(null);
+        const createMarker = useCallback(()=>{ 
+            
+            const {naver} = window;
+            for (var i=0; i<arr.length; i++) {
+                console.log(nMap, arr[i].x, arr[i].y);
+                let cur = new naver.maps.LatLng(arr[i].y, arr[i].x); //각 좌표에 마커를 찍어준다. 
+                let marker = new naver.maps.Marker({
+                    map: nMap,
+                    position: cur,
+                    
+                });
+            
+            };
+        });
+        });
         $('.result').click(function(){
         });
     </script>
