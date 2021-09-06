@@ -90,11 +90,6 @@
                     } else console.log('##check')
                 };
 
-                places.keywordSearch('치킨', callback);
-
-                console.log('#check')
-                console.log(places.keywordSearch('치킨', callback))
-
                 var marker = new naver.maps.Marker({
                     map: map,
                     position: curLocation,
@@ -102,6 +97,11 @@
                         url: 'https://wutdidusay.github.io/life/img/here.png'
                     }
                 });
+
+                places.keywordSearch('치킨', callback);
+
+                console.log('#check')
+                console.log(places.keywordSearch('치킨', callback))
             });
         } else alert("어디 계신지 모르게써요")
 
