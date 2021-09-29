@@ -19,6 +19,9 @@ body.eat-this {
 body.lotto {
     background: #dc3545;
 }
+body.drink {
+    background: #dc3545;
+}
 .notice-text {
     text-align: center;
     background: #ffc107;
@@ -143,9 +146,11 @@ nav.active .mark:before {
     border: 2px solid #000;
     border-radius: 5px;
 }
+.update-drink-wrap ul,
 .update-wrap ul {
     overflow: hidden;
 }
+.update-drink-wrap li,
 .update-wrap li {
     float: left;
     width: 50%;

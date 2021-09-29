@@ -78,6 +78,23 @@ $(function(){
     return data
   });
 
+  // drink page menu load
+  var menu = []
+  var drinkMenu = $.getJSON("./drinkList.json", function (data) {
+    var winPath = window.location.pathname.split("/").pop().split('.').shift()
+    if(winPath == 'drink'){
+      for (i=0; i<drinkMenu.responseJSON.length; i++){
+        for (j=0; j<drinkMenu.responseJSON[i].list.length; j++){
+            var val = drinkMenu.responseJSON[i].list[j]
+            menu.push(val)
+            $('.drink-wrap ul').append('<li>' + val + '<i class="del fas fa-minus-circle"></i>' + '</li>');
+            $('.update-drink-wrap ul').append('<li>' + val + '</li>');
+        }
+      }
+    }
+    return data
+  });
+
   $('.input-wrap li').on('click',function(){
       $('.input-wrap li').removeClass('active');
       $(this).addClass('active');
