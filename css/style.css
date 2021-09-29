@@ -20,7 +20,7 @@ body.lotto {
     background: #dc3545;
 }
 body.drink {
-    background: #dc3545;
+    background: #383d41;
 }
 .notice-text {
     text-align: center;
@@ -211,6 +211,9 @@ h1:active i {
     background: #0f5132;
     color: #fff;
     text-shadow: 2px 2px 0px #000;
+}
+.drink .input-wrap li.active {
+    background: #383d41;
 }
 .input-wrap li:not(:nth-child(1)):not(:nth-child(4)) {
     border-left: 2px solid #000;

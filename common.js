@@ -78,24 +78,7 @@ $(function(){
     return data
   });
 
-  // drink page menu load
-  var menu = []
-  var drinkMenu = $.getJSON("./drinkList.json", function (data) {
-    var winPath = window.location.pathname.split("/").pop().split('.').shift()
-    if(winPath == 'drink'){
-      for (i=0; i<drinkMenu.responseJSON.length; i++){
-        for (j=0; j<drinkMenu.responseJSON[i].list.length; j++){
-            var val = drinkMenu.responseJSON[i].list[j]
-            menu.push(val)
-            $('.drink-wrap ul').append('<li>' + val + '<i class="del fas fa-minus-circle"></i>' + '</li>');
-            $('.update-drink-wrap ul').append('<li>' + val + '</li>');
-        }
-      }
-    }
-    return data
-  });
-
-  $('.input-wrap li').on('click',function(){
+  $('.eat-this .input-wrap li').on('click',function(){
       $('.input-wrap li').removeClass('active');
       $(this).addClass('active');
       menu = []
@@ -116,6 +99,52 @@ $(function(){
               pick = i;
               for (j=0; j<eatThis.responseJSON[pick].list.length; j++){
                 var val = eatThis.responseJSON[pick].list[j]
+                menu.push(val)
+                $('.menu ul').append('<li>' + val + '<i class="del fas fa-minus-circle"></i>' + '</li>');
+              }
+          }
+      }
+      console.log(menu)
+  });
+
+  // drink page menu load
+  var menu = []
+  var drinkMenu = $.getJSON("./drinkList.json", function (data) {
+    var winPath = window.location.pathname.split("/").pop().split('.').shift()
+    if(winPath == 'drink'){
+      for (i=0; i<drinkMenu.responseJSON.length; i++){
+        for (j=0; j<drinkMenu.responseJSON[i].list.length; j++){
+            var val = drinkMenu.responseJSON[i].list[j]
+            menu.push(val)
+            $('.drink-wrap ul').append('<li>' + val + '<i class="del fas fa-minus-circle"></i>' + '</li>');
+            $('.update-drink-wrap ul').append('<li>' + val + '</li>');
+        }
+      }
+    }
+    return data
+  });
+
+  $('.drink .input-wrap li').on('click',function(){
+      $('.input-wrap li').removeClass('active');
+      $(this).addClass('active');
+      menu = []
+      $('.menu ul li').remove()
+
+      if(this.id == 'All'){
+          for (i=0; i<drinkMenu.responseJSON.length; i++){
+              for (j=0; j<drinkMenu.responseJSON[i].list.length; j++){
+                  var val = drinkMenu.responseJSON[i].list[j]
+                  menu.push(val)
+                  $('.menu ul').append('<li>' + val + '<i class="del fas fa-minus-circle"></i>' + '</li>');
+              }
+          }
+      }
+
+      for (i=0; i<drinkMenu.responseJSON.length; i++){
+          if( this.id == drinkMenu.responseJSON[i].food ) {
+              pick = i;
+              for (j=0; j<drinkMenu.responseJSON[pick].list.length; j++){
+                var val = drinkMenu.responseJSON[pick].list[j]
                 menu.push(val)
                 $('.menu ul').append('<li>' + val + '<i class="del fas fa-minus-circle"></i>' + '</li>');
               }
