@@ -1,22 +1,22 @@
 [
     {
-      "food" : "KR",
+      "food" : "RAIN",
       "list" : ["김치전"]
     },
     {
-      "food" : "CN",
-      "list" : ["양꼬치"]
+      "food" : "HOT",
+      "list" : ["콩불"]
     },
     {
-      "food" : "US",
-      "list" : ["치킨"]
+      "food" : "SOUP",
+      "list" : ["홍합탕"]
     },
     {
-      "food" : "JP",
+      "food" : "CLEAN",
       "list" : ["회"]
     },
     {
       "food" : "ETC",
-      "list" : ["쌀국수"]
+      "list" : ["양꼬치"]
     }
   ]
