@@ -165,6 +165,7 @@ $(function(){
 
   // aside navigation menu
   $('.mark').click(function(){
+    $('.modal').removeClass('active');
     if($('nav').is('.active')){
       $('nav, .dim').removeClass('active');
     } else {
