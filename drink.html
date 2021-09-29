@@ -43,12 +43,12 @@
     </script>
 </head>
 
-<body class="chooseMenu" ontouchstart="">
+<body class="eat-this" ontouchstart="">
     <div class="dim"></div>
     <nav>
         <span class="mark"></span>
         <ul>
-            <li class="active"><a href="index.html">랜덤메뉴</a></li>
+            <li><a href="index.html">랜덤메뉴</a></li>
             <li><a href="map-api.html">공사중</a></li>
             <li><a href="eat-this.html">이거 먹어</a></li>
             <li><a href="drink.html">술 마셔</a></li>
@@ -56,12 +56,27 @@
         </ul>
     </nav>
 
-    <h1 class="clear">랜덤메뉴 <i class="fas fa-sync-alt"></i></h1>
-    <div class="input-wrap">
-        <input type="text" placeholder="메뉴를 적으셈" class="input">
-        <button type="button" class="add-menu"><i class="fas fa-plus"></i></button>
+    <div class="modal">
+        <h2><span>차림표</span></h2>
+        <div class="update-wrap">
+            <ul>
+            </ul>
+        </div>
     </div>
-    <div class="menu">
+
+    <h1 class="update-modal">한잔 해? <i class="fas fa-book"></i></h1>
+    <p class="notice-text">술 땡긴다</p>
+    <div class="input-wrap">
+        <ul class="tab">
+            <li id="All" class="active">아몰랑</li>
+            <li id="KR">한식</li>
+            <li id="CN">중식</li>
+            <li id="US">양식</li>
+            <li id="JP">일식</li>
+            <li id="ETC">기타</li>
+        </ul>
+    </div>
+    <div class="menu eat-this-wrap">
         <ul>
         </ul>
     </div>

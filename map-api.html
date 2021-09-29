@@ -53,6 +53,7 @@
             <li><a href="index.html">랜덤메뉴</a></li>
             <li><a href="map-api.html">공사중</a></li>
             <li><a href="eat-this.html">이거 먹어</a></li>
+            <li><a href="drink.html">술 마셔</a></li>
             <li><a href="lotto.html">어른의 맛</a></li>
         </ul>
     </nav>
@@ -73,22 +74,22 @@
         //     zoom: 17
         // });
 
-        // var curLocation = '';
+        var curLocation = '';
 
-        // if (navigator.geolocation) {
-        //     navigator.geolocation.getCurrentPosition(function(pos) {
-        //         curLocation = new naver.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
-        //         map.setCenter(curLocation)
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(pos) {
+                // curLocation = new naver.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+                // map.setCenter(curLocation)
 
-        //         var marker = new naver.maps.Marker({
-        //             map: map,
-        //             position: curLocation,
-        //             icon: {
-        //                 url: 'https://wutdidusay.github.io/life/img/here.png'
-        //             }
-        //         });
-        //     });
-        // } else alert("어디 계신지 모르게써요")
+                // var marker = new naver.maps.Marker({
+                //     map: map,
+                //     position: curLocation,
+                //     icon: {
+                //         url: 'https://wutdidusay.github.io/life/img/here.png'
+                //     }
+                // });
+            });
+        } else alert("어디 계신지 모르게써요")
 
         // 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
         var infowindow = new kakao.maps.InfoWindow({zIndex:1});
