@@ -116,9 +116,14 @@ $(function(){
         for (j=0; j<drinkMenu.responseJSON[i].list.length; j++){
             var val = drinkMenu.responseJSON[i].list[j]
             menu.push(val)
-            $('.drink-wrap ul').append('<li>' + val + '<i class="del fas fa-minus-circle"></i>' + '</li>');
-            $('.update-drink-wrap ul').append('<li>' + val + '</li>');
         }
+      }
+      var dupMenu = [...new Set(menu)]
+      menu = dupMenu
+
+      for (i=0; i<menu.length; i++){
+        $('.drink-wrap ul').append('<li>' + menu[i] + '<i class="del fas fa-minus-circle"></i>' + '</li>');
+        $('.update-drink-wrap ul').append('<li>' + menu[i] + '</li>');
       }
     }
     return data
@@ -135,8 +140,13 @@ $(function(){
               for (j=0; j<drinkMenu.responseJSON[i].list.length; j++){
                   var val = drinkMenu.responseJSON[i].list[j]
                   menu.push(val)
-                  $('.menu ul').append('<li>' + val + '<i class="del fas fa-minus-circle"></i>' + '</li>');
               }
+          }
+          var dupMenu = [...new Set(menu)]
+          menu = dupMenu
+
+          for (i=0; i<menu.length; i++){
+            $('.menu ul').append('<li>' + menu[i] + '<i class="del fas fa-minus-circle"></i>' + '</li>');
           }
       }
 
