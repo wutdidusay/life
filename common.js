@@ -221,6 +221,12 @@ $(function(){
   $('.result').on('click',function(){
     console.log(menu)
     result()
+    var HTMLElement = document.querySelector(".menu li.active")
+    setTimeout(() => {
+      party.confetti(HTMLElement, {
+        count: party.variation.range(10, 200),
+      });
+    }, 400);
   })
 
   // scroll to top
