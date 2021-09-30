@@ -224,7 +224,8 @@ $(function(){
     var HTMLElement = document.querySelector(".menu li.active")
     setTimeout(() => {
       party.confetti(HTMLElement, {
-        count: party.variation.range(10, 200),
+        count: party.variation.range(100, 100),
+	      size: party.variation.range(1, 1.5)
       });
     }, 400);
   })
