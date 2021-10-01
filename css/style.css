@@ -20,6 +20,7 @@ body.lotto {
 body.drink {
     background: #383d41;
 }
+.notice,
 .notice-text {
     text-align: center;
     background: #ffc107;
@@ -28,6 +29,7 @@ body.drink {
     padding: 5px 0;
     margin-bottom: 10px;
 }
+.notice:before,
 .notice-text:before {
     content: '\f071';
     display: inline-block;
@@ -35,6 +37,31 @@ body.drink {
     color: #fff;
     vertical-align: middle;
     margin-right: 5px;
+}
+.notice {
+    position: fixed;
+    top: -50px;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    transition: all 0.2s;
+    color: #000;
+    animation: slideUp 2s;
+    animation-delay: 0.5s;
+}
+@keyframes slideUp {
+    0% {
+        top: -50px;
+    }
+    10% {
+        top: 0;
+    }
+    90% {
+        top: 0;
+    }
+    100% {
+        top: -50px;
+    }
 }
 nav {
     position: fixed;
@@ -112,7 +139,6 @@ nav.active .mark:before {
     opacity: 1;
     visibility: visible;
 }
-
 .modal {
     position: fixed;
     top: 50%;
