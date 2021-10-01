@@ -55,7 +55,7 @@
             <li><a href="map-api.html">공사중</a></li>
             <li><a href="eat-this.html">이거 먹어</a></li>
             <li><a href="drink.html">술 마셔</a></li>
-            <li><a href="lotto.html">어른의 맛</a></li>
+            <li><a href="lotto.html">으른의 맛</a></li>
         </ul>
     </nav>
 
@@ -79,54 +79,54 @@
 
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function(pos) {
-                curLocation = new kakao.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
-                // map.setCenter(curLocation)
+                curLocation = new naver.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+                map.setCenter(curLocation)
 
-                // var marker = new naver.maps.Marker({
-                //     map: map,
-                //     position: curLocation,
-                //     icon: {
-                //         url: 'https://wutdidusay.github.io/life/img/here.png'
-                //     }
-                // });
+                var marker = new naver.maps.Marker({
+                    map: map,
+                    position: curLocation,
+                    icon: {
+                        url: 'https://wutdidusay.github.io/life/img/here.png'
+                    }
+                });
             });
         } else alert("어디 계신지 모르게써요")
 
-        var infowindow = new kakao.maps.InfoWindow({zIndex:1});
+        // var infowindow = new kakao.maps.InfoWindow({zIndex:1});
 
-        var mapContainer = document.getElementById('map'),
-            mapOption = {
-                center: curLocation,
-                level: 3
-            };
-        var map = new kakao.maps.Map(mapContainer, mapOption); 
-        var ps = new kakao.maps.services.Places(); 
-        ps.keywordSearch('식당', placesSearchCB);
+        // var mapContainer = document.getElementById('map'),
+        //     mapOption = {
+        //         center: curLocation,
+        //         level: 3
+        //     };
+        // var map = new kakao.maps.Map(mapContainer, mapOption); 
+        // var ps = new kakao.maps.services.Places(); 
+        // ps.keywordSearch('식당', placesSearchCB);
 
-        function placesSearchCB (data, status, pagination) {
-            if (status === kakao.maps.services.Status.OK) {
-                var bounds = new kakao.maps.LatLngBounds();
+        // function placesSearchCB (data, status, pagination) {
+        //     if (status === kakao.maps.services.Status.OK) {
+        //         var bounds = new kakao.maps.LatLngBounds();
 
-                for (var i=0; i<data.length; i++) {
-                    displayMarker(data[i]);    
-                    bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
-                }       
+        //         for (var i=0; i<data.length; i++) {
+        //             displayMarker(data[i]);    
+        //             bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
+        //         }       
 
-                map.setBounds(bounds);
-            } 
-        }
+        //         map.setBounds(bounds);
+        //     } 
+        // }
 
-        function displayMarker(place) {
-            var marker = new kakao.maps.Marker({
-                map: map,
-                position: new kakao.maps.LatLng(place.y, place.x)
-            });
+        // function displayMarker(place) {
+        //     var marker = new kakao.maps.Marker({
+        //         map: map,
+        //         position: new kakao.maps.LatLng(place.y, place.x)
+        //     });
 
-            kakao.maps.event.addListener(marker, 'click', function() {
-                infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
-                infowindow.open(map, marker);
-            });
-        }
+        //     kakao.maps.event.addListener(marker, 'click', function() {
+        //         infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
+        //         infowindow.open(map, marker);
+        //     });
+        // }
 
         $('.result').click(function(){
         });
