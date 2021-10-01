@@ -6,7 +6,6 @@ document.documentElement.addEventListener('touchstart', function (event) {
 }, false);
 
 $(function(){
-  $('body').append('<p class="notice">안주 고르기가 추가 되었습니다.</p>')
   function pathMenu(){
     var windowPath = window.location.pathname.split("/").pop()
     for(i=0; i<$('nav li').length; i++){
