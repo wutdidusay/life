@@ -180,7 +180,7 @@ $(function(){
       $('nav, .dim').removeClass('active');
     } else {
       $('nav, .dim').addClass('active');
-      $('html, body').addClass('noscroll')
+      $('body').addClass('noscroll')
     }
   });
 
@@ -190,14 +190,14 @@ $(function(){
       $('.modal, .dim').removeClass('active');
     } else {
       $('.modal, .dim').addClass('active');
-      $('html, body').addClass('noscroll')
+      $('body').addClass('noscroll')
     }
   });
 
   // click dim close all
   $('.dim').click(function(){
     $('nav, .modal, .dim').removeClass('active');
-    $('html, body').removeClass('noscroll')
+    $('body').removeClass('noscroll')
   });
 
   // all clear
@@ -221,9 +221,9 @@ $(function(){
   $('.result').on('click',function(){
     console.log(menu)
     result()
-    var HTMLElement = document.querySelector(".menu li.active")
+    var el = document.querySelector(".menu li.active")
     setTimeout(() => {
-      party.confetti(HTMLElement, {
+      party.confetti(el, {
         count: party.variation.range(100, 100),
 	      size: party.variation.range(1, 1.5)
       });
