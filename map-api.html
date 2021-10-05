@@ -79,8 +79,7 @@
 
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function(pos) {
-                // curLocation = new naver.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
-                curLocation = new naver.maps.LatLng(place.y, place.x);
+                curLocation = new naver.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
                 map.setCenter(curLocation)
 
                 var ps = new kakao.maps.services.Places(); 
@@ -90,7 +89,7 @@
 
                 var marker = new naver.maps.Marker({
                     map: map,
-                    position: curLocation,
+                    position: new naver.maps.LatLng(place.y, place.x),
                     icon: {
                         url: 'https://wutdidusay.github.io/life/img/here.png'
                     }
