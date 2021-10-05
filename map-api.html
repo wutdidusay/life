@@ -85,10 +85,8 @@
                 var ps = new kakao.maps.services.Places(); 
                 ps.keywordSearch('식당', placesSearchCB);
                 console.log('keyword')
-                console.log(data)
                 ps.categorySearch('FD6', placesSearchCB, {useMapBounds:true});
                 console.log('category')
-                console.log(data)
 
                 var marker = new naver.maps.Marker({
                     map: map,
