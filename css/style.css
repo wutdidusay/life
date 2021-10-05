@@ -31,7 +31,7 @@ body.drink {
 }
 .notice:before,
 .notice-text:before {
-    content: '\f071';
+    content: '\f0a1';
     display: inline-block;
     font-family: "Font Awesome 5 Free";
     color: #fff;
@@ -41,23 +41,27 @@ body.drink {
 .notice {
     position: fixed;
     top: -50px;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 999;
-    width: 100%;
+    width: 90%;
+    border-width: 2px;
+    border-radius: 5px;
     transition: all 0.2s;
     color: #000;
     animation: slideUp 2s;
     animation-delay: 0.5s;
+    padding: 10px 0;
 }
 @keyframes slideUp {
     0% {
         top: -50px;
     }
     10% {
-        top: 0;
+        top: 10px;
     }
     90% {
-        top: 0;
+        top: 10px;
     }
     100% {
         top: -50px;
