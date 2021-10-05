@@ -79,7 +79,8 @@
 
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function(pos) {
-                curLocation = new naver.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+                // curLocation = new naver.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+                curLocation = new naver.maps.LatLng(place.y, place.x);
                 map.setCenter(curLocation)
 
                 var ps = new kakao.maps.services.Places(); 
