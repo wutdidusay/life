@@ -82,6 +82,9 @@
                 curLocation = new naver.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
                 map.setCenter(curLocation)
 
+                var ps = new kakao.maps.services.Places(); 
+                ps.keywordSearch('식당', placesSearchCB);
+
                 var marker = new naver.maps.Marker({
                     map: map,
                     position: curLocation,
@@ -92,29 +95,19 @@
             });
         } else alert("어디 계신지 모르게써요")
 
-        // var infowindow = new kakao.maps.InfoWindow({zIndex:1});
+        function placesSearchCB (data, status, pagination) {
+            if (status === kakao.maps.services.Status.OK) {
+                console.log('###check')
+                // var bounds = curLocation;
 
-        // var mapContainer = document.getElementById('map'),
-        //     mapOption = {
-        //         center: curLocation,
-        //         level: 3
-        //     };
-        // var map = new kakao.maps.Map(mapContainer, mapOption); 
-        // var ps = new kakao.maps.services.Places(); 
-        // ps.keywordSearch('식당', placesSearchCB);
+                // for (var i=0; i<data.length; i++) {
+                //     displayMarker(data[i]);    
+                //     bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
+                // }
 
-        // function placesSearchCB (data, status, pagination) {
-        //     if (status === kakao.maps.services.Status.OK) {
-        //         var bounds = new kakao.maps.LatLngBounds();
-
-        //         for (var i=0; i<data.length; i++) {
-        //             displayMarker(data[i]);    
-        //             bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
-        //         }       
-
-        //         map.setBounds(bounds);
-        //     } 
-        // }
+                // map.setBounds(bounds);
+            } 
+        }
 
         // function displayMarker(place) {
         //     var marker = new kakao.maps.Marker({
