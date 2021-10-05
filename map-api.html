@@ -89,7 +89,7 @@
 
                 var marker = new naver.maps.Marker({
                     map: map,
-                    position: new naver.maps.LatLng(place.y, place.x),
+                    position: curLocation,
                     icon: {
                         url: 'https://wutdidusay.github.io/life/img/here.png'
                     }
@@ -99,15 +99,14 @@
 
         function placesSearchCB (data, status, pagination) {
             if (status === kakao.maps.services.Status.OK) {
-                var bounds = curLocation;
-                console.log(bounds)
+                console.log(data, status, pagination)
 
                 // for (var i=0; i<data.length; i++) {
                 //     displayMarker(data[i]);    
                 //     bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
                 // }
 
-                // map.setBounds(bounds);
+                // map.setBounds(curLocation);
             } 
         }
 
