@@ -85,6 +85,8 @@
                 var ps = new kakao.maps.services.Places(); 
                 ps.keywordSearch('식당', placesSearchCB);
 
+                console.log(place)
+
                 var marker = new naver.maps.Marker({
                     map: map,
                     position: curLocation,
@@ -97,8 +99,8 @@
 
         function placesSearchCB (data, status, pagination) {
             if (status === kakao.maps.services.Status.OK) {
-                console.log('###check')
-                // var bounds = curLocation;
+                var bounds = curLocation;
+                console.log(bounds)
 
                 // for (var i=0; i<data.length; i++) {
                 //     displayMarker(data[i]);    
