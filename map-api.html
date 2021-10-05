@@ -84,8 +84,11 @@
 
                 var ps = new kakao.maps.services.Places(); 
                 ps.keywordSearch('식당', placesSearchCB);
-
-                console.log(place)
+                console.log('keyword')
+                console.log(data)
+                ps.categorySearch('FD6', placesSearchCB);
+                console.log('category')
+                console.log(data)
 
                 var marker = new naver.maps.Marker({
                     map: map,
@@ -99,14 +102,14 @@
 
         function placesSearchCB (data, status, pagination) {
             if (status === kakao.maps.services.Status.OK) {
-                console.log(data, status, pagination)
 
                 // for (var i=0; i<data.length; i++) {
                 //     displayMarker(data[i]);    
                 //     bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
                 // }
 
-                // map.setBounds(curLocation);
+                map.setBounds(curLocation);
+                console.log(data, status, pagination)
             } 
         }
 
