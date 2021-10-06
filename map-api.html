@@ -83,9 +83,7 @@
                 map.setCenter(curLocation)
 
                 var ps = new kakao.maps.services.Places(); 
-                // ps.keywordSearch('식당', placesSearchCB);
-                // console.log('keyword')
-                ps.categorySearch('FD6', placesSearchCB, {useMapBounds:true});
+                ps.keywordSearch('음식점', placesSearchCB);
 
                 var marker = new naver.maps.Marker({
                     map: map,
@@ -104,6 +102,8 @@
                 //     displayMarker(data[i]);    
                 //     bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
                 // }
+
+                map.setBounds(curLocation);
                 console.log(data, status, pagination)
             } 
         }
