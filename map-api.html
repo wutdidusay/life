@@ -104,7 +104,7 @@
                 // });
 
                 // 장소 검색 객체를 생성합니다
-                var ps = new kakao.maps.services.Places();
+                var ps = new kakao.maps.services.Places(curLocation);
                 // 키워드로 장소를 검색합니다
                 ps.keywordSearch('음식점', placesSearchCB); 
             });
