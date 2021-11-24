@@ -63,31 +63,36 @@
         <ul>
         </ul>
     </div>
-    <div class="pension-numb-wrap">
-        <p class="pension-numb"></p>
-    </div>
+    <p class="pension-guide"><b>1등</b> 월 <i>700</i>만원 x <i>20</i>년</p>
+    <p class="pension-guide"><b>보너스</b> 월 <i>100</i>만원 x <i>10</i>년</p>
     <div class="result-wrap">
         <button type="button" class="pensionResult">돌려돌려<br/>내 인생</button>
     </div>
     <script>
         $(function () {
             var pensionNumb = []
-            var numbList = []
+
+            for (i = 1; i < 7; i++) {
+                $('.pension-wrap ul').append('<li>' + '</li>');
+            }
 
             function selectNumb() {
-                numbList = []
-                for (j = 1; j < 7; j++) {
-                    for (i = 0; i < 10; i++) {
-                        var ranNumb = Math.floor(Math.random() * numbList.length)
-                        pensionNumb.push(numbList[ranNumb])
-                    }
+                pensionNumb = []
+                var ranGroup = Math.floor(Math.random() * 5) + 1
+                pensionNumb.unshift(ranGroup + '조')
+                for (i = 0; i < 6; i++) {
+                    var ranNumb = Math.floor(Math.random() * 10)
+                    pensionNumb.push(ranNumb)
                 }
+                console.log(pensionNumb)
             }
 
             $('.pensionResult').on('click',function(){
-                $('.pension-wrap ul li').removeClass('active')
+                $('.pension-wrap ul li').remove()
                 selectNumb()
-                $('.pension-numb').text(pensionNumb)
+                for (i = 0; i < pensionNumb.length; i++) {
+                    $('.pension-wrap ul').append('<li>' + pensionNumb[i] + '</li>');
+                }
             })
         })
     </script>

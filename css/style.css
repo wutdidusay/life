@@ -350,6 +350,33 @@ h1:active i {
     text-align: center;
 }
 
+/* pension list */
+.pension-wrap ul {
+    text-align: center;
+    padding: 15px 0;
+}
+.pension-wrap li {
+    display: inline-block;
+    width: 45px;
+    min-height: 50px;
+    line-height: 50px;
+    font-size: 25px;
+    border-radius: 5px;
+    background: #fff;
+    margin: 2px;
+    text-align: center;
+}
+.pension-guide {
+    text-align: center;
+    padding-top: 10px;
+}
+.pension-guide b {
+    color: #dc3545;
+}
+.pension-guide i {
+    color: #00619a;
+}
+
 /* submit button */
 .result-wrap {
     position: fixed;
