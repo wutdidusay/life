@@ -360,6 +360,7 @@ h1:active i {
     padding-bottom: 20px;
     z-index: 1;
 }
+.result-wrap .pensionResult,
 .result-wrap .lottoResult,
 .result-wrap .result {
     display: inline-block;
@@ -371,6 +372,7 @@ h1:active i {
     background: #fff;
     transition: all 0.2s;
 }
+.result-wrap .pensionResult:active,
 .result-wrap .lottoResult:active,
 .result-wrap .result:active {
     -webkit-transform: rotate(180deg);

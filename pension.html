@@ -71,10 +71,9 @@
     </div>
     <script>
         $(function () {
-            var lottoNumb = []
-            var numbList = []
+            var pensionNumb = []
 
-            for (i = 1; i < 10; i++) {
+            for (i = 0; i < 10; i++) {
                 $('.pension-wrap ul').append('<li>' + i + '</li>');
             }
 
@@ -82,15 +81,14 @@
                 numbList = []
                 for (j = 1; j < 7; j++) {
                     var ranNumb = Math.floor(Math.random() * numbList.length)
-                    lottoNumb.push(numbList[ranNumb])
-                    numbList.splice(ranNumb, 1)
+                    pensionNumb.push(numbList[ranNumb])
                 }
             }
 
             $('.pensionResult').on('click',function(){
                 $('.pension-wrap ul li').removeClass('active')
                 selectNumb()
-                $('.pension-numb').text(lottoNumb)
+                $('.pension-numb').text(pensionNumb)
             })
         })
     </script>
