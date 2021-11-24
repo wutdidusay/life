@@ -20,6 +20,9 @@ body.lotto {
 body.drink {
     background: #383d41;
 }
+body.pension {
+    background: #ffeeba;
+}
 .notice,
 .notice-text {
     text-align: center;
