@@ -72,16 +72,15 @@
     <script>
         $(function () {
             var pensionNumb = []
-
-            for (i = 0; i < 10; i++) {
-                $('.pension-wrap ul').append('<li>' + i + '</li>');
-            }
+            var numbList = []
 
             function selectNumb() {
                 numbList = []
                 for (j = 1; j < 7; j++) {
-                    var ranNumb = Math.floor(Math.random() * numbList.length)
-                    pensionNumb.push(numbList[ranNumb])
+                    for (i = 0; i < 10; i++) {
+                        var ranNumb = Math.floor(Math.random() * numbList.length)
+                        pensionNumb.push(numbList[ranNumb])
+                    }
                 }
             }
 
