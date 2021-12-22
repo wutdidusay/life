@@ -6,6 +6,8 @@ document.documentElement.addEventListener('touchstart', function (event) {
 }, false);
 
 $(function(){
+  noticeMsg = "연금복권이 추가 되었습니다.";
+  $('body').prepend('<p class="notice">' + noticeMsg + '</p>');
   navList = [
     {
       'name':'랜덤선택',
