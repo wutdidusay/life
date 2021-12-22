@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
-    <title>주변에서 먹자</title>
+    <title>공사중</title>
     <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js"></script>
     <script src="common.js"></script>
@@ -51,12 +51,6 @@
     <nav>
         <span class="mark"></span>
         <ul>
-            <li><a href="index.html">랜덤메뉴</a></li>
-            <li><a href="map-api.html">공사중</a></li>
-            <li><a href="eat-this.html">이거 먹어</a></li>
-            <li><a href="drink.html">술 마셔</a></li>
-            <li><a href="lotto.html"></i>로또 추첨</a></li>
-            <li><a href="pension.html"></i>연금복권 추첨</a></li>
         </ul>
     </nav>
 
@@ -68,46 +62,46 @@
         <button type="button" class="to-top"><i class="fas fa-arrow-alt-circle-up"></i></button>
     </div>
     <script>
-        // var map = new naver.maps.Map('map', {
-        //     center: new naver.maps.LatLng(37.3595704, 127.105399),
-        //     logoControl: false,
-        //     scaleControl: false,
-        //     mapDataControl: false,
-        //     zoom: 17
-        // });
+        var map = new naver.maps.Map('map', {
+            center: new naver.maps.LatLng(37.3595704, 127.105399),
+            logoControl: false,
+            scaleControl: false,
+            mapDataControl: false,
+            zoom: 17
+        });
 
         var curLocation = '';
 
-        var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-            mapOption = {
-                center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
-                level: 3 // 지도의 확대 레벨
-            };
+        // var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+        //     mapOption = {
+        //         center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
+        //         level: 3 // 지도의 확대 레벨
+        //     };
 
         // 지도를 생성합니다    
-        var map = new kakao.maps.Map(mapContainer, mapOption);
+        // var map = new kakao.maps.Map(mapContainer, mapOption);
 
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function(pos) {
-                // curLocation = new naver.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
-                // map.setCenter(curLocation)
-                curLocation = new kakao.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
-                map.setCenter(curLocation);
+                curLocation = new naver.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+                map.setCenter(curLocation)
+                // curLocation = new kakao.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+                // map.setCenter(curLocation);
                 // var ps = new kakao.maps.services.Places(); 
                 // ps.keywordSearch('음식점', placesSearchCB);
 
-                // var marker = new naver.maps.Marker({
-                //     map: map,
-                //     position: curLocation,
-                //     icon: {
-                //         url: 'https://wutdidusay.github.io/life/img/here.png'
-                //     }
-                // });
+                var marker = new naver.maps.Marker({
+                    map: map,
+                    position: curLocation,
+                    icon: {
+                        url: 'https://wutdidusay.github.io/life/img/here.png'
+                    }
+                });
 
                 // 장소 검색 객체를 생성합니다
-                var ps = new kakao.maps.services.Places(curLocation);
+                // var ps = new kakao.maps.services.Places(curLocation);
                 // 키워드로 장소를 검색합니다
-                ps.keywordSearch('음식점', placesSearchCB); 
+                // ps.keywordSearch('음식점', placesSearchCB); 
             });
         } else alert("어디 계신지 모르게써요")
 

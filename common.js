@@ -6,6 +6,39 @@ document.documentElement.addEventListener('touchstart', function (event) {
 }, false);
 
 $(function(){
+  navList = [
+    {
+      'name':'랜덤선택',
+      'link':'index'
+    },
+    {
+      'name':'공사중',
+      'link':'map-api'
+    },
+    {
+      'name':'이거 먹어',
+      'link':'eat-this'
+    },
+    {
+      'name':'술 마셔',
+      'link':'drink'
+    },
+    {
+      'name':'로또 추첨',
+      'link':'lotto'
+    },
+    {
+      'name':'연금복권 추첨',
+      'link':'pension'
+    }
+  ];
+
+  function navMenu(){
+    for (i=0; i<navList.length; i++){
+      $('nav ul').append('<li>' + '<a href="' + navList[i].link +'.html' + '">' + navList[i].name + '</a>' + '</li>');
+    }
+  }navMenu()
+
   function pathMenu(){
     var windowPath = window.location.pathname.split("/").pop()
     for(i=0; i<$('nav li').length; i++){
@@ -13,6 +46,8 @@ $(function(){
         if(windowPath == pathHref){
           $('nav li').removeClass()
           $('nav li').eq(i).addClass('active')
+          document.title = navList[i].name
+          $('h1').text(navList[i].name)
         }
     }
   } pathMenu()
