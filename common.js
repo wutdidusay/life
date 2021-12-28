@@ -43,6 +43,10 @@ $(function () {
 
   function pathMenu() {
     var windowPath = window.location.pathname.split("/").pop()
+    console.log(window.location.pathname)
+    if (window.location.pathname == '/') {
+      $('nav li').eq(0).addClass('active')
+    }
     for (i = 0; i < $('nav li').length; i++) {
       var pathHref = $('nav li').eq(i).find('a').attr('href')
       if (windowPath == pathHref) {
