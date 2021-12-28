@@ -7,7 +7,8 @@
     <meta http-equiv="Content-Script-Type" content="text/javascript" />
     <meta http-equiv="Content-Style-Type" content="text/css" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="HandheldFriendly" content="true">
     <meta name="Author" content="wutdidusay" />
     <meta name="Keywords" content="오점뭐, 오늘 점심 뭐 먹지, 점심메뉴 고르기, 점심메뉴 추천, 메뉴추천" />
@@ -15,13 +16,13 @@
     <meta name="robots" content="ALL" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="오늘 점심 뭐 먹지" />
-    <meta property="og:site_name" content="오늘 점심 뭐 먹지"> 
+    <meta property="og:site_name" content="오늘 점심 뭐 먹지">
     <meta property="og:description" content="점심 메뉴는 왜 이렇게 고르기 어려운것인가" />
     <meta property="og:url" content="https://wutdidusay.github.io/life" />
     <meta property="og:image" content="img/meta-img.png" />
-    <meta property=”twitter:card” content="summary"/>
-    <meta property=”twitter:title” content="오늘 점심 뭐 먹지"/>
-    <meta property=”twitter:description” content="점심 메뉴는 왜 이렇게 고르기 어려운것인가"/>
+    <meta property=”twitter:card” content="summary" />
+    <meta property=”twitter:title” content="오늘 점심 뭐 먹지" />
+    <meta property=”twitter:description” content="점심 메뉴는 왜 이렇게 고르기 어려운것인가" />
     <meta name="twitter:url" content="https://wutdidusay.github.io/life">
     <meta property=”twitter:image” content="img/meta-img.png">
     <link rel="apple-touch-icon" href="img/apple-icon.png">
@@ -34,13 +35,15 @@
     <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js"></script>
     <script src="common.js"></script>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6d35e2c51ca4cd72d72c9d68d7f044ad&libraries=services"></script>
-    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=64xneazn5f"></script>
+    <script type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=6d35e2c51ca4cd72d72c9d68d7f044ad&libraries=services"></script>
+    <script type="text/javascript"
+        src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=64xneazn5f"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JX9E6TSS0S"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-JX9E6TSS0S');
     </script>
@@ -58,7 +61,7 @@
     <p class="notice-text">지도 api 기반 점심메뉴 고르기 업데이트 예정</p>
     <div id="map" style="height:calc(100% - 120px);" class="map-wrap"></div>
     <div class="result-wrap">
-        <button type="button" class="result">돌려돌려<br/>메뉴판</button>
+        <button type="button" class="result">돌려돌려<br />메뉴판</button>
         <button type="button" class="to-top"><i class="fas fa-arrow-alt-circle-up"></i></button>
     </div>
     <script>
@@ -67,45 +70,49 @@
             logoControl: false,
             scaleControl: false,
             mapDataControl: false,
-            zoom: 17
+            zoom: 15
         });
 
         var curLocation = '';
 
         var kakaoPlaces = new kakao.maps.services.Places();
-        var kakaoCall = function(result, status) {
+        var kakaoCall = function (result, status) {
             if (status === kakao.maps.services.Status.OK) {
                 nearLocation = result;
                 console.log(nearLocation);
-            }
-        };
 
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(pos) {
-                var nearLocation = [];
-                var curLocation = new naver.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
-                map.setCenter(curLocation)
-
-                kakaoPlaces.categorySearch('FD6', kakaoCall, {
-                    location: new kakao.maps.LatLng(pos.coords.latitude, pos.coords.longitude)
-                });
-
-                console.log(nearLocation);
-
-                for(i=0; i<nearLocation.length; i++){
-                    console.log(nearLocation[i].y, nearLocation[i].x);
+                for (i = 0; i < nearLocation.length; i++) {
                     var marker = new naver.maps.Marker({
                         map: map,
-                        position: new naver.maps.LatLng(nearLocation[i].x, nearLocation[i].y),
+                        position: new naver.maps.LatLng(nearLocation[i].y, nearLocation[i].x),
                         icon: {
-                            url: 'https://wutdidusay.github.io/life/img/here.png'
+                            // url: 'https://wutdidusay.github.io/life/img/here.png'
+                            url: 'https://wutdidusay.github.io/life/img/result.png'
                         }
                     });
                 }
-            });
-        } else alert("어디 계신지 모르게써요")
+            }
+        };
 
-        $('.result').click(function(){
+        function success(pos) {
+            var nearLocation = [];
+            var curLocation = new naver.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+            map.setCenter(curLocation)
+
+            kakaoPlaces.categorySearch('FD6', kakaoCall, {
+                location: new kakao.maps.LatLng(pos.coords.latitude, pos.coords.longitude)
+            });
+        }
+
+        function error() {
+            alert("어디인지 알수가 없음")
+        }
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(success, error);
+        } else alert("지원하지 않는 브라우저 입니다!")
+
+        $('.result').click(function () {
         });
     </script>
 </body>
