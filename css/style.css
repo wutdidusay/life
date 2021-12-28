@@ -204,6 +204,7 @@ h1 i {
     color: #fff;
     transition: all 0.5s;
     text-shadow: none;
+    margin-left: 10px;
 }
 h1:active i {
     -webkit-transform: rotate(360deg);
@@ -275,10 +276,11 @@ h1:active i {
 
 /* list section */
 .menu {
-    padding: 20px 15px;
+    padding: 20px 0;
 }
 .menu li {
     position: relative;
+    width: calc(100% - 30px);
     min-height: 50px;
     font-size: 20px;
     line-height: 1.2;
@@ -286,7 +288,7 @@ h1:active i {
     background: #fff;
     border: 2px solid #000;
     border-radius: 5px;
-    margin-bottom: 10px;
+    margin: 0 auto 10px;
     transition: all 0.2s;
     opacity: 1;
 }
@@ -299,7 +301,7 @@ h1:active i {
 }
 .menu li.active {
     background: #ffeeba;
-    transform: scale(1.05);
+    width: calc(100% - 10px);
 }
 .del {
     position: absolute;

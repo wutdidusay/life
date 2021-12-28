@@ -50,12 +50,18 @@ $(function () {
         $('nav li').eq(i).addClass('active')
         document.title = navList[i].name
         $('h1').text(navList[i].name)
+        if (i == 0) {
+          $('h1').text(navList[i].name).append('<i class="fas fa-sync-alt"></i>');
+        }
+        if (i == 2 || i == 3) {
+          $('h1').text(navList[i].name).append('<i class="fas fa-book"></i>');
+        }
       }
     }
   } pathMenu()
 
   function addMenu() {
-    var val = $('input').val();
+    var val = $('input').val().replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");;
     var overlap = false;
 
     if (val == '') {
@@ -260,10 +266,10 @@ $(function () {
     var el = document.querySelector(".menu li.active")
     setTimeout(() => {
       party.confetti(el, {
-        count: party.variation.range(100, 100),
+        count: party.variation.range(50, 50),
         size: party.variation.range(1, 1.5)
       });
-    }, 400);
+    }, 100);
   })
 
   // scroll to top
