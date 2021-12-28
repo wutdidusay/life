@@ -58,10 +58,10 @@
     </nav>
 
     <h1>내 주변 음식점</h1>
-    <p class="notice-text">지도 api 기반 점심메뉴 고르기 업데이트 예정</p>
+    <p class="notice-text">적당히 근처에서 먹자, 다리아퍼</p>
     <div id="map" style="height:calc(100% - 120px);" class="map-wrap"></div>
     <div class="result-wrap">
-        <button type="button" class="result">돌려돌려<br />메뉴판</button>
+        <button type="button" class="result map-result">돌려돌려<br />메뉴판</button>
         <button type="button" class="to-top"><i class="fas fa-arrow-alt-circle-up"></i></button>
     </div>
     <script>
@@ -74,33 +74,65 @@
         });
 
         var curLocation = '';
-
         var kakaoPlaces = new kakao.maps.services.Places();
-        var kakaoCall = function (result, status) {
-            if (status === kakao.maps.services.Status.OK) {
-                nearLocation = result;
-                console.log(nearLocation);
 
+        function kakaoCall(result, status) {
+            if (status === kakao.maps.services.Status.OK) {
+                var markers = [];
+                var infos = [];
+                nearLocation = result;
                 for (i = 0; i < nearLocation.length; i++) {
                     var marker = new naver.maps.Marker({
                         map: map,
                         position: new naver.maps.LatLng(nearLocation[i].y, nearLocation[i].x),
                         icon: {
-                            // url: 'https://wutdidusay.github.io/life/img/here.png'
                             url: 'https://wutdidusay.github.io/life/img/result.png'
                         }
                     });
+                    var infowindow = new naver.maps.InfoWindow({
+                        content: '<div class="maker-info" style="padding:10px;">' + '<p class="info-title" style="padding-bottom: 5px; font-size: 18px;">' + nearLocation[i].place_name + '</p>' + '<p class="info-content">' + nearLocation[i].category_name + '</p> ' + '</div > ',
+                        anchorSize: new naver.maps.Size(10, 10)
+                    });
+
+                    markers.push(marker);
+                    infos.push(infowindow);
+                }
+
+                function getClickHandler(seq) {
+                    return function (e) {
+                        var marker = markers[seq],
+                            infoWindow = infos[seq];
+
+                        if (infoWindow.getMap()) {
+                            infoWindow.close();
+                        } else {
+                            infoWindow.open(map, marker);
+                        }
+                    }
+                }
+
+                for (var i = 0, ii = markers.length; i < ii; i++) {
+                    naver.maps.Event.addListener(markers[i], 'click', getClickHandler(i));
                 }
             }
-        };
+        }
 
         function success(pos) {
             var nearLocation = [];
             var curLocation = new naver.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
             map.setCenter(curLocation)
 
+            var hereIam = new naver.maps.Marker({
+                map: map,
+                position: curLocation,
+                icon: {
+                    url: 'https://wutdidusay.github.io/life/img/here.png'
+                }
+            });
+
             kakaoPlaces.categorySearch('FD6', kakaoCall, {
-                location: new kakao.maps.LatLng(pos.coords.latitude, pos.coords.longitude)
+                location: new kakao.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
+                radius: 1000
             });
         }
 
@@ -110,10 +142,36 @@
 
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(success, error);
-        } else alert("지원하지 않는 브라우저 입니다!")
+            $('.map-result').on('click', function (kakaoCall) {
+                var mapRanNumb = Math.floor(Math.random() * nearLocation.length);
+                console.log(mapRanNumb)
+                console.log(nearLocation[mapRanNumb])
 
-        $('.result').click(function () {
-        });
+                var randomHere = new naver.maps.Marker({
+                    map: map,
+                    position: new naver.maps.LatLng(nearLocation[mapRanNumb].y, nearLocation[mapRanNumb].x),
+                    icon: {
+                        url: 'https://wutdidusay.github.io/life/img/result.png',
+                        anchor: new naver.maps.Point(10, 0)
+                    }
+                });
+                var ranInfo = new naver.maps.InfoWindow({
+                    content: '<div class="maker-info" style="padding:10px;">' + '<p class="info-title" style="padding-bottom: 5px; font-size: 18px;">' + nearLocation[mapRanNumb].place_name + '</p>' + '<p class="info-content">' + nearLocation[mapRanNumb].category_name + '</p> ' + '</div > ',
+                    anchorSize: new naver.maps.Size(10, 10)
+                });
+
+                naver.maps.Event.addListener(randomHere, "click", function (e) {
+                    if (ranInfo.getMap()) {
+                        ranInfo.close();
+                    } else {
+                        ranInfo.open(map, randomHere);
+                    }
+                });
+
+                ranInfo.close();
+                ranInfo.open(map, randomHere)
+            });
+        } else alert("브라우저가 지원이 안돼, 다른거 써")
     </script>
 </body>
 

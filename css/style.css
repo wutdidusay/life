@@ -93,7 +93,8 @@ nav li:not(:last-child) {
 nav li a {
     position: relative;
 }
-nav li:nth-child(2) a:before {
+/* 공사중 */
+/* nav li:nth-child(2) a:before {
     content: '';
     position: absolute;
     top: 40%;
@@ -102,7 +103,7 @@ nav li:nth-child(2) a:before {
     width: 110%;
     height: 2px;
     background: #dc3545;
-}
+} */
 nav li.active:after {
     content: '\f058';
     display: inline-block;
@@ -434,4 +435,12 @@ h1:active i {
     border: 2px solid #000;
     overflow: hidden;
     border-radius: 5px;
+}
+
+.maker-info {
+    text-align: center;
+}
+.maker-info .info-content {
+    font-size: 12px;
+    word-spacing: -3px;
 }
