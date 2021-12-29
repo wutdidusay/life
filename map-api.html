@@ -93,6 +93,8 @@
                         content: '<div class="maker-info" style="padding:10px;">' + '<p class="info-title" style="padding-bottom: 5px; font-size: 18px;">' + nearLocation[i].place_name + '</p>' + '<p class="info-content">' + nearLocation[i].category_name.slice(6) + '</p> ' + '</div > ',
                         anchorSize: new naver.maps.Size(10, 10)
                     });
+                    marker[i].setMap(null);
+                    marker[i].setMap(map);
 
                     markers.push(marker);
                     infos.push(infowindow);
