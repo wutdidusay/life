@@ -90,7 +90,7 @@
                         }
                     });
                     var infowindow = new naver.maps.InfoWindow({
-                        content: '<div class="maker-info" style="padding:10px;">' + '<p class="info-title" style="padding-bottom: 5px; font-size: 18px;">' + nearLocation[i].place_name + '</p>' + '<p class="info-content">' + nearLocation[i].category_name + '</p> ' + '</div > ',
+                        content: '<div class="maker-info" style="padding:10px;">' + '<p class="info-title" style="padding-bottom: 5px; font-size: 18px;">' + nearLocation[i].place_name + '</p>' + '<p class="info-content">' + nearLocation[i].category_name.slice(6) + '</p> ' + '</div > ',
                         anchorSize: new naver.maps.Size(10, 10)
                     });
 
@@ -122,6 +122,8 @@
             var curLocation = new naver.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
             map.setCenter(curLocation)
 
+            console.log(curLocation)
+
             var hereIam = new naver.maps.Marker({
                 map: map,
                 position: curLocation,
@@ -129,6 +131,8 @@
                     url: 'https://wutdidusay.github.io/life/img/here.png'
                 }
             });
+            hereIam.setMap(null);
+            hereIam.setMap(map);
 
             kakaoPlaces.categorySearch('FD6', kakaoCall, {
                 location: new kakao.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
@@ -140,8 +144,17 @@
             alert("어디인지 알수가 없음")
         }
 
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(success, error);
+        var checkPath = window.location.pathname.split("/").pop()
+        console.log(checkPath)
+
+        if (navigator.geolocation && checkPath == 'map-api.html' ) {
+            var watchOptions = {
+                enableHighAccuracy: true,
+                timeout: 3000,
+                maximumAge: 0
+            };
+            navigator.geolocation.watchPosition(success, error, watchOptions);
+            // navigator.geolocation.getCurrentPosition(success, error);
             $('.map-result').on('click', function (kakaoCall) {
                 var mapRanNumb = Math.floor(Math.random() * nearLocation.length);
                 console.log(mapRanNumb)
@@ -156,7 +169,7 @@
                     }
                 });
                 var ranInfo = new naver.maps.InfoWindow({
-                    content: '<div class="maker-info" style="padding:10px;">' + '<p class="info-title" style="padding-bottom: 5px; font-size: 18px;">' + nearLocation[mapRanNumb].place_name + '</p>' + '<p class="info-content">' + nearLocation[mapRanNumb].category_name + '</p> ' + '</div > ',
+                    content: '<div class="maker-info" style="padding:10px;">' + '<p class="info-title" style="padding-bottom: 5px; font-size: 18px;">' + nearLocation[mapRanNumb].place_name + '</p>' + '<p class="info-content">' + nearLocation[mapRanNumb].category_name.slice(6) + '</p> ' + '</div > ',
                     anchorSize: new naver.maps.Size(10, 10)
                 });
 
