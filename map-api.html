@@ -138,8 +138,21 @@
             });
         }
 
-        function error() {
-            alert("어디인지 알수가 없음")
+        function error(errorNumb) {
+            switch(errorNumb.code) {
+                case errorNumb.PERMISSION_DENIED:
+                    alert("위치사용을 거부하면 나는 오또케")
+                break;
+                case errorNumb.POSITION_UNAVAILABLE:
+                    alert("핸드폰 설정에서 위치서비스를 허용해주세요")
+                break;
+                case errorNumb.TIMEOUT:
+                    alert("요청시간이 너무 오래걸려서 지침")
+                break;
+                case errorNumb.UNKNOWN_ERROR:
+                    alert("알 수 없는 오류, 나두 몰라")
+                break;
+            }
         }
 
         var checkPath = window.location.pathname.split("/").pop()
@@ -161,7 +174,7 @@
                     map: map,
                     position: new naver.maps.LatLng(nearLocation[mapRanNumb].y, nearLocation[mapRanNumb].x),
                     icon: {
-                        url: 'https://wutdidusay.github.io/life/img/mark.png',
+                        url: 'https://wutdidusay.github.io/life/img/result.png',
                         anchor: new naver.maps.Point(10, 0)
                     }
                 });

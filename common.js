@@ -273,7 +273,7 @@ $(function () {
         count: party.variation.range(50, 50),
         size: party.variation.range(1, 1.5)
       });
-    }, 100);
+    }, 400);
   })
 
   // scroll to top
