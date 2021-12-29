@@ -93,8 +93,6 @@
                         content: '<div class="maker-info" style="padding:10px;">' + '<p class="info-title" style="padding-bottom: 5px; font-size: 18px;">' + nearLocation[i].place_name + '</p>' + '<p class="info-content">' + nearLocation[i].category_name.slice(6) + '</p> ' + '</div > ',
                         anchorSize: new naver.maps.Size(10, 10)
                     });
-                    marker[i].setMap(null);
-                    marker[i].setMap(map);
 
                     markers.push(marker);
                     infos.push(infowindow);
@@ -133,8 +131,6 @@
                     url: 'https://wutdidusay.github.io/life/img/here.png'
                 }
             });
-            hereIam.setMap(null);
-            hereIam.setMap(map);
 
             kakaoPlaces.categorySearch('FD6', kakaoCall, {
                 location: new kakao.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
@@ -155,8 +151,7 @@
                 timeout: 3000,
                 maximumAge: 0
             };
-            navigator.geolocation.watchPosition(success, error, watchOptions);
-            // navigator.geolocation.getCurrentPosition(success, error);
+            navigator.geolocation.getCurrentPosition(success, error, watchOptions);
             $('.map-result').on('click', function (kakaoCall) {
                 var mapRanNumb = Math.floor(Math.random() * nearLocation.length);
                 console.log(mapRanNumb)
