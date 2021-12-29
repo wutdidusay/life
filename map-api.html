@@ -147,9 +147,9 @@
 
         if (navigator.geolocation && checkPath == 'map-api.html' ) {
             var watchOptions = {
-                enableHighAccuracy: true,
-                timeout: 3000,
-                maximumAge: 0
+                enableHighAccuracy: true
+                // timeout: 3000,
+                // maximumAge: 0
             };
             navigator.geolocation.getCurrentPosition(success, error, watchOptions);
             $('.map-result').on('click', function (kakaoCall) {
@@ -161,7 +161,7 @@
                     map: map,
                     position: new naver.maps.LatLng(nearLocation[mapRanNumb].y, nearLocation[mapRanNumb].x),
                     icon: {
-                        url: 'https://wutdidusay.github.io/life/img/result.png',
+                        url: 'https://wutdidusay.github.io/life/img/ranMaker.png',
                         anchor: new naver.maps.Point(10, 0)
                     }
                 });
