@@ -44,7 +44,7 @@ $(function () {
   function pathMenu() {
     var windowPath = window.location.pathname.split("/").pop()
     console.log(window.location.pathname)
-    if (window.location.pathname == '/') {
+    if (window.location.pathname == '/life/') {
       $('nav li').eq(0).addClass('active')
     }
     for (i = 0; i < $('nav li').length; i++) {
