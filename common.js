@@ -6,8 +6,8 @@ document.documentElement.addEventListener('touchstart', function (event) {
 }, false);
 
 $(function () {
-  noticeMsg = "지도 공사가 끝났습니다.";
-  $('body').prepend('<p class="notice">' + noticeMsg + '</p>');
+  // noticeMsg = "지도 공사가 끝났습니다.";
+  // $('body').prepend('<p class="notice">' + noticeMsg + '</p>');
   navList = [
     {
       'name': '랜덤선택',
