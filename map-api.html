@@ -122,7 +122,7 @@
             var curLocation = new naver.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
             map.setCenter(curLocation)
 
-            console.log(curLocation)
+            console.log('# curLocation ',curLocation);
 
             var hereIam = new naver.maps.Marker({
                 map: map,
@@ -169,8 +169,8 @@
             navigator.geolocation.getCurrentPosition(success, error, watchOptions);
             $('.map-result').on('click', function (kakaoCall) {
                 var mapRanNumb = Math.floor(Math.random() * nearLocation.length);
-                console.log(mapRanNumb)
-                console.log(nearLocation[mapRanNumb])
+                console.log('# mapRanNumb ',mapRanNumb);
+                console.log('# nearLocation ',nearLocation[mapRanNumb]);
 
                 var randomHere = new naver.maps.Marker({
                     map: map,
