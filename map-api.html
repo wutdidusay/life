@@ -184,16 +184,13 @@
                     content: '<div class="maker-info" style="padding:10px;">' + '<p class="info-title" style="padding-bottom: 5px; font-size: 18px;">' + nearLocation[mapRanNumb].place_name + '</p>' + '<p class="info-content">' + nearLocation[mapRanNumb].category_name.slice(6) + '</p> ' + '</div > ',
                     anchorSize: new naver.maps.Size(10, 10)
                 });
-                var distance = naver.maps.Service.geocode(
-                                {
-                                    query: nearLocation[mapRanNumb]
-                                },
-                                function (status, response) {
-                                    console.log('# geocode response ',response);
-                                }
-                            );
+                naver.maps.Service.geocode({query: nearLocation[mapRanNumb].address_name},
+                    function (status, response) {
+                        console.log('# geocode response ',response);
+                    }
+                );
+                
                 console.log('# curLocation ', curLocation);
-                console.log('# distance ', distance);
 
                 naver.maps.Event.addListener(randomHere, "click", function (e) {
                     if (ranInfo.getMap()) {
