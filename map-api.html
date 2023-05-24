@@ -75,6 +75,8 @@
 
         var curLocation = '';
         var kakaoPlaces = new kakao.maps.services.Places();
+        var curPosX = '';
+        var curPosY = '';
 
         function kakaoCall(result, status) {
             if (status === kakao.maps.services.Status.OK) {
@@ -123,6 +125,9 @@
             map.setCenter(curLocation)
 
             console.log('# curLocation ',curLocation);
+
+            curPosX = pos.coords.latitude;
+            curPosY = pos.coords.longitude;
 
             var hereIam = new naver.maps.Marker({
                 map: map,
@@ -193,8 +198,8 @@
 
                 console.log('# 거리계산식 ',getDistance(curLocation.x, curLocation.y, nearLocation[mapRanNumb].x, nearLocation[mapRanNumb].y));
 
-                console.log('# curX ', curLocation.x);
-                console.log('# curY ', curLocation.y);
+                console.log('# curX ', curPosX);
+                console.log('# curY ', curPosY);
                 console.log('# nearX ', nearLocation[mapRanNumb].x);
                 console.log('# nearY ', nearLocation[mapRanNumb].y);
 
