@@ -144,13 +144,13 @@
                     alert("핸드폰 설정에서 위치서비스를 허용해주세요")
                 break;
                 case errorNumb.POSITION_UNAVAILABLE:
-                    alert("위치서비스는 켰지? 위치사용을 거부하면 나는 오또케")
+                    alert("위치서비스 킴? 위치사용 거부하면 안대")
                 break;
                 case errorNumb.TIMEOUT:
                     alert("요청시간이 너무 오래걸려서 지침")
                 break;
                 case errorNumb.UNKNOWN_ERROR:
-                    alert("모르는 오류, 나두 몰라")
+                    alert("모르는 오류, 나두 모름")
                 break;
             }
         }
@@ -164,7 +164,6 @@
                 // timeout: 3000,
                 // maximumAge: 0
             };
-            var proj = map.getProjection();
 
             navigator.geolocation.getCurrentPosition(success, error, watchOptions);
             $('.map-result').on('click', function (kakaoCall) {
@@ -184,12 +183,12 @@
                     content: '<div class="maker-info" style="padding:10px;">' + '<p class="info-title" style="padding-bottom: 5px; font-size: 18px;">' + nearLocation[mapRanNumb].place_name + '</p>' + '<p class="info-content">' + nearLocation[mapRanNumb].category_name.slice(6) + '</p> ' + '</div > ',
                     anchorSize: new naver.maps.Size(10, 10)
                 });
-                naver.maps.Service.geocode({query: nearLocation[mapRanNumb].address_name},
+                naver.maps.Service.geocode({query: address},
                     function (status, response) {
                         console.log('# geocode response ',response);
                     }
                 );
-                
+
                 console.log('# curLocation ', curLocation);
 
                 naver.maps.Event.addListener(randomHere, "click", function (e) {
