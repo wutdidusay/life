@@ -159,7 +159,7 @@
             var x = x2 - x1,
                 y = y2 - y1;
 
-                return Math.sqrt(x * x + y * y);
+            return Math.sqrt(Math.abs(x * x) + Math.abs(y * y));
         }
 
         var checkPath = window.location.pathname.split("/").pop()
