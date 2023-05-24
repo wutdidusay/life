@@ -193,6 +193,11 @@
 
                 console.log('# 거리계산식 ',getDistance(curLocation.x, curLocation.y, nearLocation[mapRanNumb].x, nearLocation[mapRanNumb].y));
 
+                console.log('# curX ', curLocation.x);
+                console.log('# curY ', curLocation.y);
+                console.log('# nearX ', nearLocation[mapRanNumb].x);
+                console.log('# nearY ', nearLocation[mapRanNumb].y);
+
                 naver.maps.Service.geocode({query: nearLocation[mapRanNumb].address_name},
                     function (status, response) {
                         console.log('# geocode response ',response);
