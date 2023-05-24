@@ -184,7 +184,14 @@
                     content: '<div class="maker-info" style="padding:10px;">' + '<p class="info-title" style="padding-bottom: 5px; font-size: 18px;">' + nearLocation[mapRanNumb].place_name + '</p>' + '<p class="info-content">' + nearLocation[mapRanNumb].category_name.slice(6) + '</p> ' + '</div > ',
                     anchorSize: new naver.maps.Size(10, 10)
                 });
-                var distance = proj.getDistance(curLocation, new naver.maps.LatLng(nearLocation[mapRanNumb].y, nearLocation[mapRanNumb].x));
+                var distance = naver.maps.Service.geocode(
+                                {
+                                    query: nearLocation[mapRanNumb]
+                                },
+                                function (status, response) {
+                                    console.log('# geocode response ',response);
+                                }
+                            );
                 console.log('# curLocation ', curLocation);
                 console.log('# distance ', distance);
 
