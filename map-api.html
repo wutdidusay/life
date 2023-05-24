@@ -205,7 +205,7 @@
                     anchorSize: new naver.maps.Size(10, 10)
                 });
 
-                console.log('# 거리계산식 ',calculateDistance (curLocation.y, curLocation.x, nearLocation.x, nearLocation.y));
+                console.log('# 거리계산식 ',calculateDistance (curLocation.y, curLocation.x, nearLocation[mapRanNumb].x, nearLocation[mapRanNumb].y));
 
                 naver.maps.Service.geocode({query: nearLocation[mapRanNumb].address_name},
                     function (status, response) {
