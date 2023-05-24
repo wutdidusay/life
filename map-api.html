@@ -205,8 +205,8 @@
 
                 naver.maps.Service.geocode(
                     {
-                    query: curLocation,
-                    coordinate: nearLocation[mapRanNumb]
+                    query: [{lat: curPosX},{lon: curPosY}],
+                    coordinate: [{lat: nearLocation[mapRanNumb].x},{lon: nearLocation[mapRanNumb].y}]
                     },
                     function (status, response) {
                         console.log('# geocode response ',response);
