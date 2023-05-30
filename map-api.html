@@ -207,8 +207,8 @@
 
                 naver.maps.Service.geocode(
                     {
-                    query: new naver.maps.LatLng(curPosY, curPosX),
-                    coordinate: new naver.maps.LatLng(nearLocation[mapRanNumb].y, nearLocation[mapRanNumb].x)
+                    query: strCur,
+                    coordinate: strLoc
                     },
                     function (status, response) {
                         console.log('# geocode response ',response);
