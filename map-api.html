@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
-    <title>근처에서 먹어</title>
+    <title>공사중</title>
     <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js"></script>
     <script src="common.js"></script>
@@ -49,7 +49,7 @@
     </script>
 </head>
 
-<body class="map-api" ontouchstart="">
+<body ontouchstart="">
     <div class="dim"></div>
     <nav>
         <span class="mark"></span>
@@ -57,11 +57,11 @@
         </ul>
     </nav>
 
-    <h1>내 주변 음식점</h1>
-    <p class="notice-text">적당히 근처에서 먹자, 다리아퍼</p>
+    <h1>지도Api v2 테스트</h1>
+    <p class="notice-text">네이버 지도 api v2 테스트중</p>
     <div id="map" style="height:calc(100% - 120px);" class="map-wrap"></div>
     <div class="result-wrap">
-        <button type="button" class="result map-result">돌려돌려<br />메뉴판</button>
+        <button type="button" class="result map-result">나와라<br />음식점</button>
         <button type="button" class="to-top"><i class="fas fa-arrow-alt-circle-up"></i></button>
     </div>
     <script>
@@ -156,7 +156,7 @@
         var checkPath = window.location.pathname.split("/").pop()
         console.log(checkPath)
 
-        if (navigator.geolocation && checkPath == 'map-api.html' ) {
+        if (navigator.geolocation && checkPath == 'map-v2.html' ) {
             var watchOptions = {
                 enableHighAccuracy: true
                 // timeout: 3000,
@@ -179,6 +179,17 @@
                     content: '<div class="maker-info" style="padding:10px;">' + '<p class="info-title" style="padding-bottom: 5px; font-size: 18px;">' + nearLocation[mapRanNumb].place_name + '</p>' + '<p class="info-content">' + nearLocation[mapRanNumb].category_name.slice(6) + '</p> ' + '</div > ',
                     anchorSize: new naver.maps.Size(10, 10)
                 });
+
+                console.log('# curLocation ',curLocation);
+                console.log('# nearLocation ',nearLocation[mapRanNumb]);
+
+                naver.maps.Service.geocode({
+                    query: nearLocation[mapRanNumb].address_name
+                },
+                    function (status, response) {
+                        console.log('# geocode response ',response);
+                    }
+                );
 
                 naver.maps.Event.addListener(randomHere, "click", function (e) {
                     if (ranInfo.getMap()) {

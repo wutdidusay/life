@@ -14,10 +14,6 @@ $(function () {
       'link': 'index'
     },
     {
-      'name': 'v2지도 테스트',
-      'link': 'map-v2'
-    },
-    {
       'name': '근처에서 먹어',
       'link': 'map-api'
     },
