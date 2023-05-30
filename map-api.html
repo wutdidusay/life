@@ -164,8 +164,9 @@
             dist = Math.acos(dist);
             dist = rad2deg(dist);
 
-            dist = dist * 60 * 1.1515;
-            dist = dist * 1.609344; // 킬로미터 단위적용
+            dist = dist * 60 * 1.1515 * 1.609344 * 1000;
+            if(dist<100) dist = Math.round(dist/10) * 10;
+            else dist = Math.round(dist/100) * 100;
 
             function deg2rad (deg) {
                 return (deg * Math.PI / 180.0);
@@ -207,8 +208,8 @@
                 console.log('# curLat ',curLat);
                 console.log('# curLon ',curLon);
                 console.log('# nearLocation ',nearLocation[mapRanNumb]);
-                console.log('# nearLocationY ',nearLocation[mapRanNumb].y);
-                console.log('# nearLocationX ',nearLocation[mapRanNumb].x);
+                console.log('# nearLat ',nearLocation[mapRanNumb].y);
+                console.log('# nearLon ',nearLocation[mapRanNumb].x);
                 console.log('# getDistance ', getDistance(Number(curLat), Number(curLon), Number(nearLocation[mapRanNumb].y), Number(nearLocation[mapRanNumb].x)));
 
                 naver.maps.Service.geocode({
