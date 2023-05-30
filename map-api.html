@@ -213,8 +213,9 @@
                 console.log('# getDistance ', getDistance(Number(curLat), Number(curLon), Number(nearLocation[mapRanNumb].y), Number(nearLocation[mapRanNumb].x)));
 
                 naver.maps.Service.geocode({
-                        query: new naver.maps.LatLng(curLat, curLon)
-                        // coordinate: [nearLocation[mapRanNumb].y, nearLocation[mapRanNumb].x].join(',')
+                        // query: new naver.maps.LatLng(nearLocation[mapRanNumb].y, nearLocation[mapRanNumb].x),
+                        query: '분당구 불정로 6',
+                        coordinate: new naver.maps.LatLng(curLat, curLon)
                     },
                     function (status, response) {
                         console.log('# geocode response ',response);
