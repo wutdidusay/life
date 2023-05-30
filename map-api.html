@@ -164,7 +164,7 @@
             var x = Number(x2) - Number(x1),
                 y = Number(y2) - Number(y1);
 
-            return Math.sqrt(Math.abs(x * x) + Math.abs(y * y));
+            return Math.sqrt(x * x + y * y);
         }
 
         var checkPath = window.location.pathname.split("/").pop()
