@@ -182,8 +182,8 @@
                 var mapRanNumb = Math.floor(Math.random() * nearLocation.length);
                 var strLocY = nearLocation[mapRanNumb].y;
                 var strLocX = nearLocation[mapRanNumb].x;
-                var strCur = [curPosY,curPosX];
-                var strLoc = [nearLocation[mapRanNumb].y,nearLocation[mapRanNumb].x];
+                var strCur = curPosY+','+curPosX;
+                var strLoc = 'nearLocation[mapRanNumb].y'+','+'nearLocation[mapRanNumb].x';
 
                 console.log('# mapRanNumb ',mapRanNumb);
                 console.log('# curLocation ', curLocation);
@@ -207,8 +207,8 @@
 
                 naver.maps.Service.geocode(
                     {
-                    query: strCur,
-                    coordinate: strLoc
+                    query: new naver.maps.LatLng(curPosY, curPosX),
+                    coordinate: new naver.maps.LatLng(nearLocation[mapRanNumb].y, nearLocation[mapRanNumb].x)
                     },
                     function (status, response) {
                         console.log('# geocode response ',response);
