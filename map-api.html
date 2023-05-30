@@ -182,8 +182,8 @@
                 var mapRanNumb = Math.floor(Math.random() * nearLocation.length);
                 var strLocY = nearLocation[mapRanNumb].y;
                 var strLocX = nearLocation[mapRanNumb].x;
-                var strCur = {curPosY,curPosX};
-                var strLoc = {strLocY,strLocX};
+                var strCur = [curPosY,curPosX];
+                var strLoc = [nearLocation[mapRanNumb].y,nearLocation[mapRanNumb].x];
 
                 console.log('# mapRanNumb ',mapRanNumb);
                 console.log('# curLocation ', curLocation);
