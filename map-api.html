@@ -205,7 +205,7 @@
 
                 console.log('# curLocation ',curLocation);
                 console.log('# nearLocation ',nearLocation[mapRanNumb]);
-                console.log('# getDistance ', getDistance(Number(curLat), Number(curLon), Number(nearLocation[mapRanNumb].x), Number(nearLocation[mapRanNumb].y)));
+                console.log('# getDistance ', getDistance(Number(curLat), Number(curLon), Number(nearLocation[mapRanNumb].y), Number(nearLocation[mapRanNumb].x)));
 
                 naver.maps.Service.geocode({
                         query: nearLocation[mapRanNumb].address_name
