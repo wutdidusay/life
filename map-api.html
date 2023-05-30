@@ -184,7 +184,10 @@
                 console.log('# nearLocation ',nearLocation[mapRanNumb]);
 
                 naver.maps.Service.geocode({
-                        query: nearLocation[mapRanNumb].x+','+nearLocation[mapRanNumb].y
+                        query: nearLocation[mapRanNumb].address_name
+                    },
+                    {
+                        coordinate: nearLocation[mapRanNumb].x+','+nearLocation[mapRanNumb].y
                     },
                     function (status, response) {
                         console.log('# geocode response ',response);
