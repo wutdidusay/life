@@ -75,8 +75,6 @@
 
         var curLocation = '';
         var kakaoPlaces = new kakao.maps.services.Places();
-        var curPosX = '';
-        var curPosY = '';
 
         function kakaoCall(result, status) {
             if (status === kakao.maps.services.Status.OK) {
@@ -124,11 +122,6 @@
             var curLocation = new naver.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
             map.setCenter(curLocation)
 
-            console.log('# curLocation ',curLocation);
-
-            curPosX = pos.coords.longitude;
-            curPosY = pos.coords.latitude;
-
             var hereIam = new naver.maps.Marker({
                 map: map,
                 position: curLocation,
@@ -160,13 +153,6 @@
             }
         }
 
-        function getDistance (x1, y1, x2, y2) {
-            var x = Number(x2) - Number(x1),
-                y = Number(y2) - Number(y1);
-
-            return Math.sqrt(x * x + y * y);
-        }
-
         var checkPath = window.location.pathname.split("/").pop()
         console.log(checkPath)
 
@@ -180,17 +166,6 @@
             navigator.geolocation.getCurrentPosition(success, error, watchOptions);
             $('.map-result').on('click', function (kakaoCall) {
                 var mapRanNumb = Math.floor(Math.random() * nearLocation.length);
-                var strLocY = nearLocation[mapRanNumb].y;
-                var strLocX = nearLocation[mapRanNumb].x;
-                var strCur = curPosY+','+curPosX;
-                var strLoc = nearLocation[mapRanNumb].y+','+nearLocation[mapRanNumb].x;
-
-                console.log('# mapRanNumb ',mapRanNumb);
-                console.log('# curLocation ', curLocation);
-                console.log('# nearLocation ',nearLocation[mapRanNumb]);
-                console.log('# 거리계산식 ',getDistance(curPosX, curPosY, nearLocation[mapRanNumb].x, nearLocation[mapRanNumb].y));
-                console.log('# strCur ', strCur);
-                console.log('# strLoc ', strLoc);
 
                 var randomHere = new naver.maps.Marker({
                     map: map,
@@ -204,16 +179,6 @@
                     content: '<div class="maker-info" style="padding:10px;">' + '<p class="info-title" style="padding-bottom: 5px; font-size: 18px;">' + nearLocation[mapRanNumb].place_name + '</p>' + '<p class="info-content">' + nearLocation[mapRanNumb].category_name.slice(6) + '</p> ' + '</div > ',
                     anchorSize: new naver.maps.Size(10, 10)
                 });
-
-                naver.maps.Service.geocode(
-                    {
-                    query: strCur,
-                    coordinate: strLoc
-                    },
-                    function (status, response) {
-                        console.log('# geocode response ',response);
-                    }
-                );
 
                 naver.maps.Event.addListener(randomHere, "click", function (e) {
                     if (ranInfo.getMap()) {
