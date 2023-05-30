@@ -184,8 +184,13 @@
                 var strLocX = nearLocation[mapRanNumb].x;
                 var strCur = {curPosY,curPosX};
                 var strLoc = {strLocY,strLocX};
+
                 console.log('# mapRanNumb ',mapRanNumb);
+                console.log('# curLocation ', curLocation);
                 console.log('# nearLocation ',nearLocation[mapRanNumb]);
+                console.log('# 거리계산식 ',getDistance(curPosX, curPosY, nearLocation[mapRanNumb].x, nearLocation[mapRanNumb].y));
+                console.log('# strCur ', strCur);
+                console.log('# strLoc ', strLoc);
 
                 var randomHere = new naver.maps.Marker({
                     map: map,
@@ -200,10 +205,6 @@
                     anchorSize: new naver.maps.Size(10, 10)
                 });
 
-                console.log('# 거리계산식 ',getDistance(curPosX, curPosY, nearLocation[mapRanNumb].x, nearLocation[mapRanNumb].y));
-                console.log('# curString ', Number(curPosY), Number(curPosX));
-                console.log('# nearString ', Number(nearLocation[mapRanNumb].y),Number(nearLocation[mapRanNumb].x));
-
                 naver.maps.Service.geocode(
                     {
                     query: strCur,
@@ -213,8 +214,6 @@
                         console.log('# geocode response ',response);
                     }
                 );
-
-                console.log('# curLocation ', curLocation);
 
                 naver.maps.Event.addListener(randomHere, "click", function (e) {
                     if (ranInfo.getMap()) {
