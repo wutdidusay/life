@@ -174,7 +174,7 @@
             function rad2deg (rad) {
                 return (rad * 180 / Math.PI);
             }
-            return dist;
+            return Math.round(dist);
         }
 
         var checkPath = window.location.pathname.split("/").pop()
