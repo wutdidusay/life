@@ -204,7 +204,11 @@
                 });
 
                 console.log('# curLocation ',curLocation);
+                console.log('# curLat ',curLat);
+                console.log('# curLon ',curLon);
                 console.log('# nearLocation ',nearLocation[mapRanNumb]);
+                console.log('# nearLocationY ',nearLocation[mapRanNumb].y);
+                console.log('# nearLocationX ',nearLocation[mapRanNumb].x);
                 console.log('# getDistance ', getDistance(Number(curLat), Number(curLon), Number(nearLocation[mapRanNumb].y), Number(nearLocation[mapRanNumb].x)));
 
                 naver.maps.Service.geocode({
