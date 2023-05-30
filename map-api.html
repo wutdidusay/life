@@ -75,6 +75,8 @@
 
         var curLocation = '';
         var kakaoPlaces = new kakao.maps.services.Places();
+        var curLat = '';
+        var curLon = '';
 
         function kakaoCall(result, status) {
             if (status === kakao.maps.services.Status.OK) {
@@ -119,7 +121,9 @@
 
         function success(pos) {
             var nearLocation = [];
-            var curLocation = new naver.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+            curLocation = new naver.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+            curLat = pos.coords.latitude;
+            curLon = pos.coords.longitude;
             map.setCenter(curLocation)
 
             var hereIam = new naver.maps.Marker({
@@ -201,7 +205,7 @@
 
                 console.log('# curLocation ',curLocation);
                 console.log('# nearLocation ',nearLocation[mapRanNumb]);
-                console.log('# getDistance ', getDistance(Number(pos.coords.latitude), Number(pos.coords.longitude), Number(nearLocation[mapRanNumb].x), Number(nearLocation[mapRanNumb].y)));
+                console.log('# getDistance ', getDistance(Number(curLat), Number(curLon), Number(nearLocation[mapRanNumb].x), Number(nearLocation[mapRanNumb].y)));
 
                 naver.maps.Service.geocode({
                         query: nearLocation[mapRanNumb].address_name
