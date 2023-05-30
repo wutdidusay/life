@@ -202,13 +202,13 @@
                 console.log('# curY ', curPosY);
                 console.log('# nearX ', nearLocation[mapRanNumb].x);
                 console.log('# nearY ', nearLocation[mapRanNumb].y);
-                console.log('# curString ', String(curPosY, curPosX));
-                console.log('# nearString ', String(nearLocation[mapRanNumb].y, nearLocation[mapRanNumb].x));
+                console.log('# curString ', Number(curPosY, curPosX));
+                console.log('# nearString ', Number(nearLocation[mapRanNumb].y, nearLocation[mapRanNumb].x));
 
                 naver.maps.Service.geocode(
                     {
-                    query: "126.8913851,37.5253297",
-                    coordinate: "37.52866272981046,126.89811819926398"
+                    query: Number(curPosY, curPosX),
+                    coordinate: Number(nearLocation[mapRanNumb].y, nearLocation[mapRanNumb].x)
                     },
                     function (status, response) {
                         console.log('# geocode response ',response);
