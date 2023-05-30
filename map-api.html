@@ -213,7 +213,7 @@
                 console.log('# getDistance ', getDistance(Number(curLat), Number(curLon), Number(nearLocation[mapRanNumb].y), Number(nearLocation[mapRanNumb].x)));
 
                 naver.maps.Service.geocode({
-                        query: '당산동3가',
+                        query: new naver.maps.LatLng(curLat, curLon)
                         // coordinate: [nearLocation[mapRanNumb].y, nearLocation[mapRanNumb].x].join(',')
                     },
                     function (status, response) {
