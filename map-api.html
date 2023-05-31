@@ -202,8 +202,8 @@
                 var ranInfo = new naver.maps.InfoWindow({
                     content: '<div class="maker-info" style="padding:10px;">' + 
                         '<p class="info-title" style="padding-bottom: 5px; font-size: 18px;">' + nearLocation[mapRanNumb].place_name + '</p>' + 
-                        '<p class="info-content">' + nearLocation[mapRanNumb].category_name.slice(6) + '</p> ' + 
-                        '<p class="info-content">' + getDistance(Number(curLat), Number(curLon), Number(nearLocation[mapRanNumb].y), Number(nearLocation[mapRanNumb].x)) + '미터' + '</p> ' + 
+                        '<p class="info-content" style="padding-bottom: 5px;">' + nearLocation[mapRanNumb].category_name.slice(6) + '</p> ' + 
+                        '<p class="info-content" style="text-align: right;">' + getDistance(Number(curLat), Number(curLon), Number(nearLocation[mapRanNumb].y), Number(nearLocation[mapRanNumb].x)) + 'm' + '</p> ' + 
                         '</div > ',
                     anchorSize: new naver.maps.Size(10, 10)
                 });
