@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css" />
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
-    <title>공사중</title>
+    <title>근처에서 먹어</title>
     <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/party-js@latest/bundle/party.min.js"></script>
     <script src="common.js"></script>
@@ -49,7 +49,7 @@
     </script>
 </head>
 
-<body ontouchstart="">
+<body class="map-api" ontouchstart="">
     <div class="dim"></div>
     <nav>
         <span class="mark"></span>
@@ -57,11 +57,11 @@
         </ul>
     </nav>
 
-    <h1>지도Api v2 테스트</h1>
-    <p class="notice-text">네이버 지도 api v2 테스트중</p>
+    <h1>내 주변 음식점</h1>
+    <p class="notice-text">적당히 근처에서 먹자, 다리아퍼</p>
     <div id="map" style="height:calc(100% - 120px);" class="map-wrap"></div>
     <div class="result-wrap">
-        <button type="button" class="result map-result">나와라<br />음식점</button>
+        <button type="button" class="result map-result">돌려돌려<br />메뉴판</button>
         <button type="button" class="to-top"><i class="fas fa-arrow-alt-circle-up"></i></button>
     </div>
     <script>
@@ -200,27 +200,13 @@
                     }
                 });
                 var ranInfo = new naver.maps.InfoWindow({
-                    content: '<div class="maker-info" style="padding:10px;">' + '<p class="info-title" style="padding-bottom: 5px; font-size: 18px;">' + nearLocation[mapRanNumb].place_name + '</p>' + '<p class="info-content">' + nearLocation[mapRanNumb].category_name.slice(6) + '</p> ' + '</div > ',
+                    content: '<div class="maker-info" style="padding:10px;">' + 
+                        '<p class="info-title" style="padding-bottom: 5px; font-size: 18px;">' + nearLocation[mapRanNumb].place_name + '</p>' + 
+                        '<p class="info-content">' + nearLocation[mapRanNumb].category_name.slice(6) + '</p> ' + 
+                        '<p class="info-content">' + getDistance(Number(curLat), Number(curLon), Number(nearLocation[mapRanNumb].y), Number(nearLocation[mapRanNumb].x)) + '미터' + '</p> ' + 
+                        '</div > ',
                     anchorSize: new naver.maps.Size(10, 10)
                 });
-
-                console.log('# curLocation ',curLocation);
-                console.log('# curLat ',curLat);
-                console.log('# curLon ',curLon);
-                console.log('# nearLocation ',nearLocation[mapRanNumb]);
-                console.log('# nearLat ',nearLocation[mapRanNumb].y);
-                console.log('# nearLon ',nearLocation[mapRanNumb].x);
-                console.log('# getDistance ', getDistance(Number(curLat), Number(curLon), Number(nearLocation[mapRanNumb].y), Number(nearLocation[mapRanNumb].x)));
-
-                naver.maps.Service.geocode({
-                        // query: new naver.maps.LatLng(nearLocation[mapRanNumb].y, nearLocation[mapRanNumb].x),
-                        query: '분당구 불정로 6',
-                        coordinate: '37.5253493,126.8913999'
-                    },
-                    function (status, response) {
-                        console.log('# geocode response ',response);
-                    }
-                );
 
                 naver.maps.Event.addListener(randomHere, "click", function (e) {
                     if (ranInfo.getMap()) {
